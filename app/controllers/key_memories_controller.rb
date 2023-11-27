@@ -1,0 +1,2 @@
+class KeyMemoriesController < ApplicationController
+end
