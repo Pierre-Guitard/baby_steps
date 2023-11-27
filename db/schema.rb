@@ -10,9 +10,59 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_11_27_144534) do
+ActiveRecord::Schema[7.1].define(version: 2023_11_27_161830) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "babies", force: :cascade do |t|
+    t.string "first_name"
+    t.string "last_name"
+    t.string "nickname"
+    t.string "birth_date"
+    t.string "sex"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.text "content"
+    t.bigint "memory_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["memory_id"], name: "index_comments_on_memory_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
+  end
+
+  create_table "key_memories", force: :cascade do |t|
+    t.bigint "memory_id", null: false
+    t.bigint "baby_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "event"
+    t.index ["baby_id"], name: "index_key_memories_on_baby_id"
+    t.index ["memory_id"], name: "index_key_memories_on_memory_id"
+  end
+
+  create_table "memories", force: :cascade do |t|
+    t.string "date"
+    t.string "title"
+    t.text "content"
+    t.string "location"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_memories_on_user_id"
+  end
+
+  create_table "parents", force: :cascade do |t|
+    t.bigint "baby_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["baby_id"], name: "index_parents_on_baby_id"
+    t.index ["user_id"], name: "index_parents_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -22,8 +72,19 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_27_144534) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "first_name"
+    t.string "last_name"
+    t.string "nickname"
+    t.string "birth_date"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "comments", "memories"
+  add_foreign_key "comments", "users"
+  add_foreign_key "key_memories", "babies"
+  add_foreign_key "key_memories", "memories"
+  add_foreign_key "memories", "users"
+  add_foreign_key "parents", "babies"
+  add_foreign_key "parents", "users"
 end
