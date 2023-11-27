@@ -6,4 +6,5 @@ class User < ApplicationRecord
   has_many :memories, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :babies, through: :parents
+  has_many :parents, dependent: :destroy
 end

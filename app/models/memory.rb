@@ -1,6 +1,6 @@
 class Memory < ApplicationRecord
   belongs_to :user
-  belongs_to :key_memory, dependent: :destroy
-  belongs_to :babies, through: :key_memories
+  has_many :key_memory, dependent: :destroy
   has_many :comments, dependent: :destroy
+  has_many :babies, through: :key_memories
 end
