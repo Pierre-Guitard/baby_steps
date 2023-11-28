@@ -201,7 +201,7 @@ seed_photos = ["A7300234.jpeg",
 
 Memory.all.each do |memory|
   rand(2..5).times do
-    image = File.open("/Users/romain/code/baby_steps/app/assets/images/seed/#{seed_photos.sample}")
+    image = File.open(Rails.root.join("app/assets/images/seed/#{seed_photos.sample}"))
     memory.photos.attach(io: image, filename: "photo_#{rand(1..9999)}.jpg", content_type: "image/jpg")
     puts "added photo"
   end
