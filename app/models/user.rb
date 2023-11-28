@@ -7,4 +7,5 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :babies, through: :parents
   has_many :parents, dependent: :destroy
+  validates :first_name, :last_name, :nickname, :birth_date, :email, presence: true
 end
