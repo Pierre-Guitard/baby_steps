@@ -1,0 +1,39 @@
+<div class="container">
+  <div class="light-bg d-flex justify-content-between">
+    <div class="memory-date">
+        <p><%= @memory.date %></p>
+    </div>
+    <div class="memory-buttons">
+      <p> Add buttons </p>
+    </div>
+  </div>
+  <div class="memory-title">
+    <h1><%= @memory.title %></h1>
+  </div>
+  <div class="memory-content">
+    <p><%= @memory.content %></p>
+  </div>
+  <div class="author-signature text-end">
+  <p><%= @memory.user.nickname.capitalize() %></p>
+  </div>
+  <div class="memory-photos">
+    <% @memory.photos.each_with_index do |photo, index| %>
+      <% if index == 0 %>
+        <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+      <% else %>
+        <%= cl_image_tag photo.key, height: 150, width: 200, crop: :fill %>
+      <% end %>
+    <% end %>
+  </div>
+  <div class="memory-location">
+    <p><%= @memory.location %></p>
+  </div>
+  <div class="memory-comments">
+    <h2>Comments</h2>
+    <% @memory.comments.each do |comment| %>
+      <div class="comment">
+        <p><%= comment.content %></p>
+        <p class="text-end"><%= comment.user.nickname.capitalize() %></p>
+      </div>
+    <% end %>
+</div>
