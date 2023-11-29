@@ -1,7 +1,7 @@
 <div class="container">
   <div class="light-bg d-flex justify-content-between">
     <div class="memory-date">
-        <p><%= @memory.date %></p>
+      <p><%= @memory.date.to_date.strftime("%A, %B %d, %Y") %></p>
     </div>
     <div class="memory-buttons">
       <p> Add buttons </p>
@@ -13,15 +13,19 @@
   <div class="memory-content">
     <p><%= @memory.content %></p>
   </div>
-  <div class="author-signature text-end">
+  <div class="author-signature text-end nickname-font">
   <p><%= @memory.user.nickname.capitalize() %></p>
   </div>
-  <div class="memory-photos">
+  <div class="memory-photos d-flex w-100">
     <% @memory.photos.each_with_index do |photo, index| %>
       <% if index == 0 %>
-        <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+      <div class="image-container w-50">
+        <%= cl_image_tag photo.key, width: 400, height: 400, crop: :fill, gravity: :faces, class: "object-fit-cover" %>
+      </div>
       <% else %>
-        <%= cl_image_tag photo.key, height: 150, width: 200, crop: :fill %>
+      <div class="image-container w-25">
+        <%= cl_image_tag photo.key, width: 200, height: 200, crop: :fill, gravity: :faces, class: "object-fit-cover" %>
+      </div>
       <% end %>
     <% end %>
   </div>
@@ -33,7 +37,7 @@
     <% @memory.comments.each do |comment| %>
       <div class="comment">
         <p><%= comment.content %></p>
-        <p class="text-end"><%= comment.user.nickname.capitalize() %></p>
+        <p class="text-end nickname-font"><%= comment.user.nickname.capitalize() %></p>
       </div>
     <% end %>
 </div>
