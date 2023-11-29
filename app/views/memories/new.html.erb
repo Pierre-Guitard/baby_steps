@@ -1,13 +1,2 @@
 <h1>Create a new memory</h1>
-
-
-<%= simple_form_for @memory do |f| %>
-  <%= f.input :title %>
-
-*  <%= f.input :location %>
-
-  <%= f.input :date, value: Date.today.to_s %>
-
-  <%= f.rich_text_area :content %>
-  <%= f.submit %>
-<% end %>
+<%= render "shared/form_new_memory" %>
