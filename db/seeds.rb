@@ -12,7 +12,7 @@ Memory.delete_all
 Parent.delete_all
 Baby.delete_all
 User.delete_all
-Cloudinary::Api.delete_all_resources
+# Cloudinary::Api.delete_all_resources
 
 puts "creating users"
 romain = User.new(
@@ -103,7 +103,7 @@ locations = [
 ]
 
 puts "creating memories - add photos later"
-30.times do
+5.times do
   memory = Memory.new(
     date: "#{rand(2020..2023)}-#{rand(1..12)}-#{rand(1..28)}",
     title: Faker::Movie.title,
@@ -122,7 +122,7 @@ Memory.all.each do |memory|
   comment = Comment.new(
     content: Faker::Lorem.paragraph(sentence_count: rand(1..3)),
     memory: memory,
-    user: memory.user.id == 1 ? maud : romain
+    user: memory.user.email == "romain@baby-steps.app" ? maud : romain
   )
   comment.save!
   puts "Created comment"
@@ -153,14 +153,31 @@ events = [
   "First haircut"
 ]
 
-Memory.all.each_with_index do |memory, index|
-  key_memory = KeyMemory.new(
-    baby: Baby.all.sample,
-    memory: memory,
-    event: events[index],
-  )
-  key_memory.save!
-  puts "created key_memory"
+Memory.all.each do |memory|
+  if memory.date.to_date > "2023-02-12".to_date
+    key_memory1 = KeyMemory.new(
+      baby: Baby.find_by(first_name: "gustave"),
+      memory: memory,
+      event: events.sample
+    )
+    key_memory1.save!
+    puts "created key_memory"
+    key_memory2 = KeyMemory.new(
+      baby: Baby.find_by(first_name: "mathias"),
+      memory: memory,
+      event: events.sample
+    )
+    key_memory2.save!
+    puts "created key_memory"
+  else
+    key_memory = KeyMemory.new(
+      baby: Baby.find_by(first_name: "mathias"),
+      memory: memory,
+      event: events.sample
+    )
+    key_memory.save!
+    puts "created key_memory"
+  end
 end
 
 # add photos to memories
@@ -209,9 +226,9 @@ seed_photos = ["A7300234.jpeg",
           "IMG_4586.jpeg"]
 
 Memory.all.each do |memory|
-  rand(2..5).times do
+  rand(2..3).times do
     image = File.open(Rails.root.join("app/assets/images/seed/#{seed_photos.sample}"))
-    memory.photos.attach(io: image, filename: "photo_#{rand(1..9999)}.jpg", content_type: "image/jpg")
+    memory.photos.attach(io: image, filename: "photo_#{rand(1..9999999)}.jpg", content_type: "image/jpg")
     puts "added photo"
   end
   puts "added photos to memory"
