@@ -1,26 +1,19 @@
-<h1>Timeline</h1>
+<div class="container-home">
 
-<h2> <%= @memories.length %> memories available </h2>
-<div class="card-memory-timeline">
+<h1>My family timeline</h1>
 
-  <%# <%= cl_image_tag(pony.photos.first.key, class: "img-rounded", alt: "#{pony.name} Image") %>
-      <div class="card-memory-infos">
-        <% @memories.each do |memory| %>
+  <div class="card-memory-timeline">
+    <% @memories.each do |memory| %>
+      <div class="card-memory">
+        <%= cl_image_tag(memory.photos[0].key, gravity: :face, crop: :fill) %>
+        <div class="card-memory-infos">
           <h2><%= memory.title %></h2>
           <p><%= memory.date %></p>
-          <p><%= memory.content %></p>
-        <% end %>
+          <p><%= truncate(memory.content, length: 40) %></p>
+        </div>
       </div>
-</div>
-
-
-
-
-
-
-
-<p>Find me in app/views/pages/home.html.erb</p>
-
+    <% end %>
+    
 <a href="www.lewagon.com" class="btn btn-primary">Create memory</a>
 <a href="www.lewagon.com" class="btn btn-danger">Decline</a>
 <a href="www.lewagon.com" class="btn btn-warning">Accept</a>
@@ -28,7 +21,6 @@
 <a href="www.lewagon.com" class="btn btn-info">test btn</a>
 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab ipsum porro quisquam voluptatibus beatae consectetur est repudiandae doloremque ad.</p>
 
-<h1>test oui bonjour</h1>
 
 <img class="avatar-bordered  avatar-blue" alt="avatar-bordered" src="https://kitt.lewagon.com/placeholder/users/sarahlafer" />
 <img class="avatar-bordered avatar-blue-light" alt="avatar-bordered" src="https://kitt.lewagon.com/placeholder/users/sarahlafer" />
@@ -36,4 +28,9 @@
 <img class="avatar-bordered avatar-yellow" alt="avatar-bordered" src="https://kitt.lewagon.com/placeholder/users/sarahlafer" />
 
 <h2>searchbar</h2>
-<%= render "shared/search_bar" %>
+<%= render "shared/search_bar" %> 
+  
+</div> 
+
+
+
