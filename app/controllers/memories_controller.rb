@@ -1,5 +1,5 @@
 class MemoriesController < ApplicationController
-  before_action :set_memory, only: []
+  before_action :set_memory, only: [show]
 
   def new
     @memory = Memory.new
@@ -11,7 +11,11 @@ class MemoriesController < ApplicationController
     @memory.save
   end
 
+  def show
+  end
+
   private
+
   def set_memory
     @memory = Memory.find(params[:id])
   end
