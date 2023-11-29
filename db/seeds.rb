@@ -12,7 +12,7 @@ Memory.delete_all
 Parent.delete_all
 Baby.delete_all
 User.delete_all
-Cloudinary::Api.delete_all_resources
+# Cloudinary::Api.delete_all_resources
 
 puts "creating users"
 romain = User.new(
