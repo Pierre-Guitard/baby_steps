@@ -1,26 +1,23 @@
-<h1>Timeline</h1>
+<div class="container-home">
+<h1>My family timeline</h1>
 
-<h2> <%= @memories.length %> memories available </h2>
-
-<div class="container">
-<div class="card-memory-timeline">
-  <% @memories.each do |memory| %>
-    <div class="card-memory">
-      <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" col-sm-3/>
-      <%# <%= cl_image_tag(pony.photos.first.key, class: "img-rounded", alt: "#{pony.name} Image") %>
-      <div class="card-memory-infos">
-        <h2><%= memory.title %></h2>
-        <p><%= memory.date %></p>
-        <p><%= truncate(memory.content, length: 30) %></p>
+  <div class="card-memory-timeline">
+    <% @memories.each do |memory| %>
+      <div class="card-memory">
+        <%= cl_image_tag(memory.photos[0].key, gravity: :face, crop: :fill) %>
+        <div class="card-memory-infos">
+          <h2><%= memory.title %></h2>
+          <p><%= memory.date %></p>
+          <p><%= truncate(memory.content, length: 40) %></p>
+        </div>
       </div>
-    </div>
-  <% end %>
-</div>
+    <% end %>
+  </div>
 
 
 
 
-<p>Find me in app/views/pages/home.html.erb</p>
+<%# <p>Find me in app/views/pages/home.html.erb</p>
 
 <a href="www.lewagon.com" class="btn btn-primary">test btn</a>
 <a href="www.lewagon.com" class="btn btn-danger">test btn</a>
@@ -29,5 +26,5 @@
 <a href="www.lewagon.com" class="btn btn-info">test btn</a>
 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab ipsum porro quisquam voluptatibus beatae consectetur est repudiandae doloremque ad.</p>
 
-<h1>test oui bonjour</h1>
+<h1>test oui bonjour</h1> %>
 </div>
