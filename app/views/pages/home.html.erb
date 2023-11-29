@@ -3,7 +3,7 @@
 <h2> <%= @memories.length %> memories available </h2>
 <div class="card-memory-timeline">
   <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" col-sm-3/>
-  <%= cl_image_tag(pony.photos.first.key, class: "img-rounded", alt: "#{pony.name} Image") %>
+  <%# <%= cl_image_tag(pony.photos.first.key, class: "img-rounded", alt: "#{pony.name} Image") %> 
       <div class="card-memory-infos">
         <% @memories.each do |memory| %>
           <h2><%= memory.title %></h2>
