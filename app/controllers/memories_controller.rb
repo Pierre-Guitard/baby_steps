@@ -12,6 +12,8 @@ class MemoriesController < ApplicationController
   end
 
   def show
+    @comments = @memory.comments
+    @babies = @memory.babies
   end
 
   private
