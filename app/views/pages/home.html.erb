@@ -1,2 +1,31 @@
-<h1>Pages#home</h1>
+<h1>Timeline</h1>
+
+<h2> <%= @memories.length %> memories available </h2>
+<div class="card-memory-timeline">
+  <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" col-sm-3/>
+  <%= cl_image_tag(pony.photos.first.key, class: "img-rounded", alt: "#{pony.name} Image") %>
+      <div class="card-memory-infos">
+        <% @memories.each do |memory| %>
+          <h2><%= memory.title %></h2>
+          <p><%= memory.date %></p>
+          <p><%= memory.content %></p>
+        <% end %>
+      </div>
+</div>
+
+
+
+
+
+
+
 <p>Find me in app/views/pages/home.html.erb</p>
+
+<a href="www.lewagon.com" class="btn btn-primary">test btn</a>
+<a href="www.lewagon.com" class="btn btn-danger">test btn</a>
+<a href="www.lewagon.com" class="btn btn-warning">test btn</a>
+<a href="www.lewagon.com" class="btn btn-success">test btn</a>
+<a href="www.lewagon.com" class="btn btn-info">test btn</a>
+<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab ipsum porro quisquam voluptatibus beatae consectetur est repudiandae doloremque ad.</p>
+
+<h1>test oui bonjour</h1>
