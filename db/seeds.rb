@@ -103,7 +103,7 @@ locations = [
 ]
 
 puts "creating memories - add photos later"
-30.times do
+5.times do
   memory = Memory.new(
     date: "#{rand(2020..2023)}-#{rand(1..12)}-#{rand(1..28)}",
     title: Faker::Movie.title,
@@ -209,7 +209,7 @@ seed_photos = ["A7300234.jpeg",
           "IMG_4586.jpeg"]
 
 Memory.all.each do |memory|
-  rand(2..5).times do
+  rand(2..3).times do
     image = File.open(Rails.root.join("app/assets/images/seed/#{seed_photos.sample}"))
     memory.photos.attach(io: image, filename: "photo_#{rand(1..9999)}.jpg", content_type: "image/jpg")
     puts "added photo"
