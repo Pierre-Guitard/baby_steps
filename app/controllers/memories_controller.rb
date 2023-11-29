@@ -1,5 +1,5 @@
 class MemoriesController < ApplicationController
-  before_action :set_memory, only: [show]
+  before_action :set_memory, only: [:show]
 
   def new
     @memory = Memory.new
