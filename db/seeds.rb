@@ -95,11 +95,11 @@ puts "parent entry 4 created"
 # create memories
 
 locations = [
-  "135 rue de Fontenay 94300 Vincennes FRANCE",
-  "122 rue Salvador Allende 92000 Nanterre FRANCE",
-  "445 Chem. de la Riante Colline, 74120 Megève FRANCE",
-  "2281 Rte de l'Europe, 84350 Courthézon FRANCE",
-  "12 Rte du Sémaphore, 29630 Plougasnou FRANCE"
+  "135 rue de Fontenay 94300 Vincennes",
+  "122 rue Salvador Allende 92000 Nanterre",
+  "445 Chem. de la Riante Colline, 74120 Megève",
+  "2281 Rte de l'Europe, 84350 Courthézon",
+  "12 Rte du Sémaphore, 29630 Plougasnou"
 ]
 
 puts "creating memories - add photos later"

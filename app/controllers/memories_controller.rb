@@ -14,6 +14,12 @@ class MemoriesController < ApplicationController
   def show
     @comments = @memory.comments
     @babies = @memory.babies
+    if @memory.geocode
+      @markers = [
+        lat: @memory.geocode[0],
+        lng: @memory.geocode[1]
+      ]
+    end
   end
 
   private

@@ -37,10 +37,13 @@
       </div>
       <% end %>
     <% end %>
+  <div class="memory-location image-container w-25" style="width: 100%; height: 89px;"
+      data-controller="map"
+      data-map-markers-value="<%= @markers.to_json %>"
+      data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+    </div>
   </div>
-  <div class="memory-location">
-    <p><%= @memory.location %></p>
-  </div>
+
   <div class="memory-comments">
     <h2>Comments</h2>
     <% @comments.each do |comment| %>
@@ -49,4 +52,5 @@
         <p class="text-end nickname-font"><%= comment.user.nickname.capitalize() %></p>
       </div>
     <% end %>
+  </div>
 </div>
