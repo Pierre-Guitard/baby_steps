@@ -7,8 +7,17 @@
       <p> Add buttons </p>
     </div>
   </div>
-  <div class="memory-title">
-    <h1><%= @memory.title %></h1>
+  <div class="d-flex justify-content-between">
+    <div class="memory-title">
+      <h1><%= @memory.title %></h1>
+    </div>
+    <div class="babies-avatar">
+    <p>
+      <% @babies.each do |baby| %>
+        <%= baby.nickname.capitalize() %>
+      <% end %>
+    </p>
+    </div>
   </div>
   <div class="memory-content">
     <p><%= @memory.content %></p>
@@ -34,7 +43,7 @@
   </div>
   <div class="memory-comments">
     <h2>Comments</h2>
-    <% @memory.comments.each do |comment| %>
+    <% @comments.each do |comment| %>
       <div class="comment">
         <p><%= comment.content %></p>
         <p class="text-end nickname-font"><%= comment.user.nickname.capitalize() %></p>
