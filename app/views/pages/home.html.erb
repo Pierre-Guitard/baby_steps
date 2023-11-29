@@ -7,8 +7,8 @@
   <% @memories.each do |memory| %>
     <div class="card-memory">
       <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" col-sm-3/>
+      <%# <%= cl_image_tag(pony.photos.first.key, class: "img-rounded", alt: "#{pony.name} Image") %>
       <div class="card-memory-infos">
-        <%# <%= cl_image_tag(pony.photos.first.key, class: "img-rounded", alt: "#{pony.name} Image") %>
         <h2><%= memory.title %></h2>
         <p><%= memory.date %></p>
         <p><%= truncate(memory.content, length: 30) %></p>
@@ -16,9 +16,6 @@
     </div>
   <% end %>
 </div>
-</div>
-
-
 
 
 
@@ -33,3 +30,4 @@
 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab ipsum porro quisquam voluptatibus beatae consectetur est repudiandae doloremque ad.</p>
 
 <h1>test oui bonjour</h1>
+</div>
