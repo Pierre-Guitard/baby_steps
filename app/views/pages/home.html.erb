@@ -1,18 +1,22 @@
 <h1>Timeline</h1>
 
 <h2> <%= @memories.length %> memories available </h2>
-<div class="card-memory-timeline">
-  <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" col-sm-3/>
-  <%= cl_image_tag(pony.photos.first.key, class: "img-rounded", alt: "#{pony.name} Image") %>
-      <div class="card-memory-infos">
-        <% @memories.each do |memory| %>
-          <h2><%= memory.title %></h2>
-          <p><%= memory.date %></p>
-          <p><%= memory.content %></p>
-        <% end %>
-      </div>
-</div>
 
+<div class="container">
+<div class="card-memory-timeline">
+  <% @memories.each do |memory| %>
+    <div class="card-memory">
+      <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" col-sm-3/>
+      <div class="card-memory-infos">
+        <%# <%= cl_image_tag(pony.photos.first.key, class: "img-rounded", alt: "#{pony.name} Image") %>
+        <h2><%= memory.title %></h2>
+        <p><%= memory.date %></p>
+        <p><%= truncate(memory.content, length: 30) %></p>
+      </div>
+    </div>
+  <% end %>
+</div>
+</div>
 
 
 
