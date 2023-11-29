@@ -9,12 +9,12 @@
         <div class="card-memory-infos">
           <h2><%= memory.title %></h2>
           <p><%= memory.date %></p>
-          <p><%= truncate(memory.content, length: 40) %></p>
+          <p><%= truncate(memory.content.body.to_plain_text, length: 40) %></p>
         </div>
       </div>
     <% end %>
-    
-<a href="www.lewagon.com" class="btn btn-primary">Create memory</a>
+
+<%# <a href="www.lewagon.com" class="btn btn-primary">Create memory</a>
 <a href="www.lewagon.com" class="btn btn-danger">Decline</a>
 <a href="www.lewagon.com" class="btn btn-warning">Accept</a>
 <a href="www.lewagon.com" class="btn btn-success">Submit</a>
@@ -25,12 +25,9 @@
 <img class="avatar-bordered  avatar-blue" alt="avatar-bordered" src="https://kitt.lewagon.com/placeholder/users/sarahlafer" />
 <img class="avatar-bordered avatar-blue-light" alt="avatar-bordered" src="https://kitt.lewagon.com/placeholder/users/sarahlafer" />
 <img class="avatar-bordered avatar-red" alt="avatar-bordered" src="https://kitt.lewagon.com/placeholder/users/sarahlafer" />
-<img class="avatar-bordered avatar-yellow" alt="avatar-bordered" src="https://kitt.lewagon.com/placeholder/users/sarahlafer" />
+<img class="avatar-bordered avatar-yellow" alt="avatar-bordered" src="https://kitt.lewagon.com/placeholder/users/sarahlafer" /> %>
 
 <h2>searchbar</h2>
-<%= render "shared/search_bar" %> 
-  
-</div> 
+<%= render "shared/search_bar" %>
 
-
-
+</div>
