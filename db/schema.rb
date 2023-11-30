@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_11_29_155618) do
+ActiveRecord::Schema[7.1].define(version: 2023_11_30_104739) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -85,7 +85,6 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_29_155618) do
   create_table "memories", force: :cascade do |t|
     t.string "date", default: "2023-11-29"
     t.string "title"
-    t.text "content"
     t.string "location"
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
