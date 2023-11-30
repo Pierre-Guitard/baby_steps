@@ -1,6 +1,12 @@
 <div class="container-home">
 
 <h1>My family timeline</h1>
+
+<div class="d-flex justify-content-between align-items-center">
+  <img class="avatar-bordered avatar-green" alt="avatar-bordered" src="https://avatars.githubusercontent.com/u/9579324?v=4https://avatars.githubusercontent.com/u/9579324?v=4" />
+  <%= render "shared/search_bar" %>
+</div>
+
   <div class="card-memory-timeline">
     <% @memories.each do |memory| %>
       <%# <%= link_to_memory_path(memory) do %>
@@ -27,9 +33,5 @@
 <img class="avatar-bordered avatar-blue-light" alt="avatar-bordered" src="https://kitt.lewagon.com/placeholder/users/sarahlafer" />
 <img class="avatar-bordered avatar-red" alt="avatar-bordered" src="https://kitt.lewagon.com/placeholder/users/sarahlafer" />
 <img class="avatar-bordered avatar-yellow" alt="avatar-bordered" src="https://kitt.lewagon.com/placeholder/users/sarahlafer" /> %>
-
-<%# <h2>searchbar</h2>
-
-<%= render "shared/search_bar" %>
 
 </div>
