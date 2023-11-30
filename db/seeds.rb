@@ -131,26 +131,12 @@ end
 puts "creating key_memories"
 
 events = [
-  "Birth - length and weight",
-  "Return home",
-  "First outing",
-  "First smile",
-  "First bath at home",
-  "First roll over",
-  "First travel",
-  "First sitting",
-  "First crawling",
+  "Roll over",
+  "Sitting",
+  "Crawling",
   "Standing",
-  "First steps",
-  "First tooth",
-  "First word",
-  "First full night",
-  "First day of care",
-  "First purée",
-  "First solid food",
-  "First meeting a cousin",
-  "",
-  "First haircut"
+  "Walking",
+  ""
 ]
 
 Memory.all.each do |memory|
