@@ -8,8 +8,9 @@
         <i class="fa-solid fa-timeline"></i>
       </button>
 
-      <%= button_to "<i class='fa-solid fa-plus icon-plus' ></i>".html_safe, new_memory_path,
-      :class => "btn btn-danger", :method => :get %>
+      <%= link_to new_memory_path, class: "btn btn-danger" do %>
+        <i class="fa-solid fa-plus icon-plus"></i>
+      <% end %>
 
       <button class="button">
         <i class="fa-solid fa-map-location-dot icon"></i>
