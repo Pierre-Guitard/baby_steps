@@ -8,7 +8,9 @@
         <i class="fa-solid fa-timeline"></i>
       </button>
 
-      <a href="www.lewagon.com" class="btn btn-danger"><i class="fa-solid fa-plus icon-plus" ></i></a>
+      <%= link_to new_memory_path, class: "btn btn-danger" do %>
+        <i class="fa-solid fa-plus icon-plus"></i>
+      <% end %>
 
       <button class="button">
         <i class="fa-solid fa-map-location-dot icon"></i>
