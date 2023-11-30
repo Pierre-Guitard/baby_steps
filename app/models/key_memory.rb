@@ -1,10 +1,10 @@
 class KeyMemory < ApplicationRecord
   EVENTS = [
-    "Roll over",
-    "Sitting",
-    "Crawling",
-    "Standing",
-    "Walking",
+    "roll over",
+    "sitting",
+    "crawling",
+    "standing",
+    "walking",
     ""
   ]
 
