@@ -13,7 +13,7 @@
         <div class="card-memory">
           <%= cl_image_tag(memory.photos[0].key, gravity: :face, crop: :fill) %>
           <div class="card-memory-infos">
-            <h2><%= memory.title %></h2>
+            <h2><%= link_to "#{memory.title}", memory %></h2>
             <p><%= memory.date %></p>
             <%# <p><%= truncate(memory.content.body.to_plain_text, length: 40) %>
           </div>
