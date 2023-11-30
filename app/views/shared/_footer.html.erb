@@ -8,7 +8,8 @@
         <i class="fa-solid fa-timeline"></i>
       </button>
 
-      <a href="www.lewagon.com" class="btn btn-danger"><i class="fa-solid fa-plus icon-plus" ></i></a>
+      <%= button_to "<i class='fa-solid fa-plus icon-plus' ></i>".html_safe, new_memory_path,
+      :class => "btn btn-danger", :method => :get %>
 
       <button class="button">
         <i class="fa-solid fa-map-location-dot icon"></i>
