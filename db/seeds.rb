@@ -310,3 +310,23 @@ puts "Created specific key memory 2"
 photo1 = File.open(Rails.root.join("app/assets/images/seed/2021-09-17 - IMG_4285.jpeg"))
 memory2.photos.attach(io: photo1, filename: "photo_#{rand(1..9999999)}.jpg", content_type: "image/jpg")
 puts "added video"
+
+memory3 = Memory.new(
+  date: "2023-11-20",
+  title: "Gustave a fait du quattre pattes pour la première fois !",
+  location: "135 rue de Fontenay 94300 Vincennes",
+  user: maud
+)
+memory3.save!
+ActionText::RichText.create!(record_type: 'Memory', record_id: memory3.id, name: 'content', body: "<p>Aujourd'hui, un moment magique s'est produit dans la vie de Gustave. À l'âge de 11 mois, il a entrepris son tout premier voyage en quattre pattes. Les yeux brillants d'excitation, il a déployé toute son énergie pour explorer le monde qui l'entoure.</p>
+  <p>Les premiers pas hésitants se sont transformés en mouvements plus assurés, et notre petit explorateur a commencé à parcourir la pièce avec une curiosité infinie. C'était un spectacle incroyable de voir sa petite silhouette se déplacer avec tant de détermination.</p>
+  <p>À cet instant, le salon est devenu un terrain d'aventure infini pour Gustave. Chaque coin, chaque recoin, était une nouvelle découverte passionnante. Les sourires radieux et les petits gazouillis joyeux remplissaient l'air, créant une atmosphère de bonheur pur.</p>
+  <p>Les parents émerveillés ont immortalisé ce moment avec des photos et des vidéos, capturant les premiers pas indépendants de Gustave dans le monde de la mobilité. C'est un pas de plus vers son développement, et chaque instant de cette journée restera gravé dans nos mémoires comme une étape inoubliable de sa petite vie pleine d'aventures.</p>")
+puts "Created specific memory 3"
+
+KeyMemory.create!(
+  baby: Baby.find_by(first_name: "gustave"),
+  memory: memory3,
+  event: "Crawling"
+)
+puts "Created specific key memory 3"
