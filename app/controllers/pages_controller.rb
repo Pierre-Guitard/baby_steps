@@ -3,5 +3,6 @@ class PagesController < ApplicationController
 
   def home
     @memories = Memory.all
+    @memories = Memory.order(date: :desc)
   end
 end

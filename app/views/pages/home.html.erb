@@ -4,14 +4,16 @@
 
   <div class="card-memory-timeline">
     <% @memories.each do |memory| %>
-      <div class="card-memory">
-        <%= cl_image_tag(memory.photos[0].key, gravity: :face, crop: :fill) %>
-        <div class="card-memory-infos">
-          <h2><%= memory.title %></h2>
-          <p><%= memory.date %></p>
-          <p><%= truncate(memory.content.body.to_plain_text, length: 40) %></p>
+      <%# <%= link_to_memory_path(memory) do %>
+        <div class="card-memory">
+          <%= cl_image_tag(memory.photos[0].key, gravity: :face, crop: :fill) %>
+          <div class="card-memory-infos">
+            <h2><%= memory.title %></h2>
+            <p><%= memory.date %></p>
+            <p><%= truncate(memory.content.body.to_plain_text, length: 40) %></p>
+          </div>
         </div>
-      </div>
+      <%# <% end %>
     <% end %>
 
 <%# <a href="www.lewagon.com" class="btn btn-primary">Create memory</a>
