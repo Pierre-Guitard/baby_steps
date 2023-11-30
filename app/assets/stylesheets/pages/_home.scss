@@ -12,28 +12,30 @@
 
 .card-memory-timeline {
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
+  // flex-direction: column;
   align-items: center;
-  padding: 5px;
+  padding: 0px;
 }
 
 .card-memory {
   margin-bottom: 5px; /* Espacement entre chaque carte */
-  display: flex;
   background: white;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-  width: 100%; /* Ajuster la largeur à 100% pour occuper toute la largeur de la timeline */
-  border-radius: 10px;
+  width: 30%; /* Ajuster la largeur à 100% pour occuper toute la largeur de la timeline */
+  border-radius: 6px;
+  padding: 2px;
   background-color: $light-gray;
+  margin: 4px;
 }
 
 .card-memory-infos {
-  padding: 8px;
+  padding: 4px;
   align-items: center;
 }
 
 .card-memory-timeline img {
-  width: 30%;
+  width: 100%;
   object-fit: cover;
   border-radius: 10px;
   padding: 4px;
@@ -43,10 +45,13 @@
   // font-size: 16px;
   // font-weight: bold;
   margin: 0;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  // overflow: hidden;
+  // text-overflow: ellipsis;
   white-space: nowrap;
-  width: 55vw;
+  // width: 55vw;
+  font-size: 100%;
+  text-wrap: wrap;
+  width: 100%;
 }
 
 .card-memory-timeline p {
@@ -59,4 +64,7 @@
   text-overflow: ellipsis;
   white-space: nowrap;
   width: 55vw;
+  color: gray;
+  font-weight: 400;
+  font-size: 11px;
 }
