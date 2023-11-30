@@ -53,4 +53,15 @@
       </div>
     <% end %>
   </div>
+  <div class="linked-events">
+  <% if @linked_memories[0].length != 0 %>
+  <% @linked_memories.each do |memory_array| %>
+    <% memory_array.each do |memory| %>
+      <div class="linked-memory">
+       <%= link_to "linked memory", memory_path(memory) %>
+      </div>
+    <% end %>
+  <% end %>
+  <% end %>
+  </div>
 </div>
