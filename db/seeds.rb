@@ -249,7 +249,7 @@ ActionText::RichText.create!(record_type: 'Memory', record_id: memory1.id, name:
   <p>Les parents émerveillés ont immortalisé ce moment avec des photos et des vidéos, capturant les premiers pas indépendants de Mathias dans le monde de la mobilité. C'est un pas de plus vers son développement, et chaque instant de cette journée restera gravé dans nos mémoires comme une étape inoubliable de sa petite vie pleine d'aventures.</p>")
 puts "Created specific memory 1"
 
-Comment.new(
+Comment.create!(
   content: "La première fois que j'ai vu Mathias se déplacer à quatre pattes, mon cœur s'est rempli d'une joie indescriptible. C'est incroyable de voir à quel point il a grandi et gagné en indépendance. Ses petits pas hésitants ont donné le coup d'envoi à une nouvelle aventure, et je suis tellement fière de son exploration intrépide du monde qui l'entoure.
   Les rires et les sourires de Mathias ont illuminé la pièce, créant des souvenirs précieux que nous chérirons toujours. C'est une étape mémorable, et je suis impatiente de partager de nombreux moments similaires alors qu'il continue de grandir. Mon cœur de maman déborde de bonheur et de gratitude envers chaque petite étape de son voyage.
 ",
@@ -258,7 +258,7 @@ Comment.new(
 )
 puts "Created specific comment 1"
 
-KeyMemory.new(
+KeyMemory.create!(
   baby: Baby.find_by(first_name: "mathias"),
   memory: memory1,
   event: "Crawling"
@@ -266,5 +266,38 @@ KeyMemory.new(
 puts "Created specific key memory 1"
 
 video1 = File.open(Rails.root.join("app/assets/images/seed/2021-10-20 - IMG_2472.mp4"))
-memory1.photos.attach(io: video1, filename: "video_#{rand(1..9999999)}.jpg", content_type: "video/mp4")
+memory1.photos.attach(io: video1, filename: "video_#{rand(1..9999999)}.mp4", content_type: "video/mp4")
+puts "added video"
+
+memory2 = Memory.new(
+  date: "2021-09-17",
+  title: "Prêt pour le vélo 🚲 !",
+  location: "135 rue de Fontenay 94300 Vincennes",
+  user: maud
+)
+memory2.save!
+ActionText::RichText.create!(record_type: 'Memory', record_id: memory2.id, name: 'content', body: "  <p>Une étape excitante dans la vie de Mathias : il a maintenant son propre casque de vélo, prêt pour de nouvelles aventures sur deux roues ! Aujourd'hui, nous avons fixé avec émotion son petit casque coloré et l'avons installé sur le siège enfant du vélo.</p>
+  <p>Ses yeux pétillaient d'excitation alors que nous nous apprêtions à commencer notre balade à vélo. Le cliquetis du casque et le bruit joyeux de sa voix résonnaient dans l'air, créant une ambiance de joie et d'aventure.</p>
+  <p>C'est incroyable de voir à quel point il grandit, de passer de spectateur à co-pilote sur nos escapades à vélo. Les premiers tours de roue avec son petit rire au vent sont des moments que nous chérirons à jamais. Une nouvelle page s'ouvre dans son livre d'aventures, et nous sommes impatients de partager de nombreuses balades ensemble.</p>
+")
+puts "Created specific memory 2"
+
+Comment.create!(
+  content: "Le moment où Mathias a mis son casque de vélo pour la première fois restera gravé dans ma mémoire. Ses yeux pétillants de curiosité et d'excitation ont été la meilleure récompense pour cette nouvelle étape.
+L'ajustement du casque, les premiers tours de roue ensemble, chaque instant était chargé d'une énergie contagieuse. La sensation de partager ma passion pour le vélo avec lui était indescriptible, un moment père-fils que je chérirai toujours.
+À chaque son de son rire dans le siège enfant, je pouvais sentir l'aventure se déployer sous nos roues. C'est le début d'une série de balades à vélo mémorables, et je suis impatient de partager de nombreux kilomètres de bonheur sur deux roues avec mon petit coéquipier.",
+  memory: memory2,
+  user: romain
+)
+puts "Created specific comment 1"
+
+KeyMemory.create!(
+  baby: Baby.find_by(first_name: "mathias"),
+  memory: memory2,
+  event: ""
+)
+puts "Created specific key memory 2"
+
+photo1 = File.open(Rails.root.join("app/assets/images/seed/2021-09-17 - IMG_4285.jpeg"))
+memory2.photos.attach(io: photo1, filename: "photo_#{rand(1..9999999)}.jpg", content_type: "image/jpg")
 puts "added video"
