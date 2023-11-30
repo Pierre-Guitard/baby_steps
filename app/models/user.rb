@@ -8,4 +8,5 @@ class User < ApplicationRecord
   has_many :babies, through: :parents
   has_many :parents, dependent: :destroy
   validates :email, presence: true
+  has_one_attached :avatar
 end
