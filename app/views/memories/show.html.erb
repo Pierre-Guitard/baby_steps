@@ -37,6 +37,19 @@
       </div>
       <% end %>
     <% end %>
+
+    <% @memory.clips.each_with_index do |clip, index| %>
+      <% if index == 0 %>
+        <div class="image-container w-50">
+          <video width="145" height="145" controls src="<%= cl_video_path(clip.key) %>"></video>
+        </div>
+      <% else %>
+        <div class="image-container w-25">
+          <video width="50" height="50" controls src="<%= cl_video_path(clip.key) %>"></video>
+        </div>
+      <% end %>
+    <% end %>
+
   <div class="memory-location image-container w-25" style="width: 100%; height: 89px;"
       data-controller="map"
       data-map-markers-value="<%= @markers.to_json %>"

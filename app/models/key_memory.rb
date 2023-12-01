@@ -13,3 +13,4 @@ class KeyMemory < ApplicationRecord
   validates :memory_id, :baby_id, presence: true
   validates :event, inclusion: { in: EVENTS }
 end
+  
