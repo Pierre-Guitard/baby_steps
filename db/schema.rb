@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_11_30_104739) do
+ActiveRecord::Schema[7.1].define(version: 2023_12_01_110000) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -83,7 +83,6 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_30_104739) do
   end
 
   create_table "memories", force: :cascade do |t|
-    t.string "date", default: "2023-11-29"
     t.string "title"
     t.string "location"
     t.bigint "user_id", null: false
@@ -91,6 +90,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_30_104739) do
     t.datetime "updated_at", null: false
     t.float "latitude"
     t.float "longitude"
+    t.date "date"
     t.index ["user_id"], name: "index_memories_on_user_id"
   end
 

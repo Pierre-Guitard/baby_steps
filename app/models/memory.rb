@@ -4,8 +4,7 @@ class Memory < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :babies, through: :key_memories
   has_rich_text :content
-  has_many_attached :photos
-  has_many_attached :clips
+  has_many_attached :medias
   validates :date, :title, :user_id, :location, presence: true
   validates :title, length: { minimum: 4 }
   geocoded_by :location
