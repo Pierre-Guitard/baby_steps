@@ -13,7 +13,7 @@
     </div>
     <div class="babies-avatar">
       <% @babies.each do |baby| %>
-        <%= cl_image_tag baby.avatar.key, height: 50, class: "avatar-bordered avatar-green" %>
+        <%= cl_image_tag baby.avatar.key, height: 50, class: "avatar-bordered", style: "border-color: #{baby.color}" %>
       <% end %>
     </div>
   </div>

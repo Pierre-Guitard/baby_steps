@@ -5,9 +5,9 @@
   background-color: $light-gray;
 }
 
-.container-home h1{
- margin-left: 8px;
- color: $gray;
+.container-home h1 {
+  margin-left: 8px;
+  color: $gray;
 }
 
 .card-memory-timeline {
@@ -19,10 +19,12 @@
 }
 
 .card-memory {
-  margin-bottom: 5px; /* Espacement entre chaque carte */
+  margin-bottom: 5px;
+  /* Espacement entre chaque carte */
   background: white;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-  width: 30%; /* Ajuster la largeur à 100% pour occuper toute la largeur de la timeline */
+  width: 30%;
+  /* Ajuster la largeur à 100% pour occuper toute la largeur de la timeline */
   border-radius: 6px;
   padding: 2px;
   background-color: $light-gray;
@@ -67,4 +69,10 @@
   color: gray;
   font-weight: 400;
   font-size: 11px;
+}
+
+.baby-avatar-container {
+  display: flex;
+  gap: 10px;
+  padding-right: 10px;
 }
