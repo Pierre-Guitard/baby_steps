@@ -1,53 +1,52 @@
 <div class="container-home">
-<h1>Create a new memory</h1>
+  <h1>Create a new memory</h1>
 
-<div class="container col-11">
+  <div class="container col-11">
 
-<div class="row justify-content-center">
+    <div class="row justify-content-center">
 
-<div class="form" data-controller="form">
+      <div class="form" data-controller="form">
 
-  <div class="py-4">
-    <% @babies.each do |baby| %>
-    <img class="avatar-bordered  avatar-blue" data-baby="<%= baby.id %>" alt="avatar-bordered" src="https://kitt.lewagon.com/placeholder/users/sarahlafer" data-action="click->form#sendBabyId" data-form-target="baby"/>
-      <%# <%= cl_image_tag baby.medias.first.key, class: "avatar-bordered  avatar-blue" %>
-    <% end %>
-  </div>
-  
-  <%= simple_form_for @memory do |f| %>
+        <%= simple_form_for @memory do |f| %>
+        <div class="py-4 d-flex">
+          <% @babies.each do |baby| %>
+          <div>
+            <%= cl_image_tag baby.avatar.key, class: "avatar-bordered  avatar-blue", data: {baby: baby.id, action: "click->form#sendBabyId", form_target:"baby"} %>
+          </div>
+          <% end %>
+        </div>
 
-  <div class="row">
-    <%= f.input :title, label: "✍️ Title", placeholder: "Enter a title" %>
-  </div>
-  
-  
-  <div class="d-none" data-form-target="eventfield">
-    <%= f.simple_fields_for :key_memories, KeyMemory.new do |key_memory_subform| %>
-      <%= key_memory_subform.input :event, label: "🥇 Event", placeholder: "Choose a key event", collection: KeyMemory::EVENTS %>
-      <%= key_memory_subform.input :baby_id, as: :hidden, input_html: { data: { form_target: "input" }} %>
-    <% end %>
-  </div>
+        <div class="d-none" data-form-target="eventfield">
+          <%= f.simple_fields_for :key_memories, KeyMemory.new do |key_memory_subform| %>
+            <%= key_memory_subform.input :event, label: "🥇 Event", placeholder: "Choose a key event", collection: KeyMemory::EVENTS %>
+            <%= key_memory_subform.input :baby_id, as: :hidden, input_html: { data: { form_target: "input" }} %>
+          <% end %>
+        </div>
+        
+        <div class="row">
+          <%= f.input :title, label: "✍️ Title", placeholder: "Enter a title" %>
+        </div>
 
-  <div class="d-flex justify-content-between">
-  <div class="col-5">
-    <%= f.input :location, label: "📍Location", placeholder: "City" %>
-  </div>
-  <div class="col-5">
-    <%= f.input :date, label: "📅 Date" %>
-  </div>
-  </div>
+        <div class="d-flex justify-content-between">
+          <div class="col-5">
+            <%= f.input :location, label: "📍Location", placeholder: "City" %>
+          </div>
+          <div class="col-5">
+            <%= f.input :date,label: "📅 Date", as: :date, html5: true %>
+          </div>
+        </div>
 
-  <div class="mb-6">
-  <%= f.rich_text_area :content, label: "✍️ Description", placeholder: "Write a description" %>
-  </div>
+        <div class="mb-6">
+          <%= f.rich_text_area :content, label: "✍️ Description", placeholder: "Write a description" %>
+        </div>
 
-  <div class="row" style="margin-top: 12px">
-    <%= f.input :medias, as: :file,  input_html: { multiple: true }, label: "📸🎥 Media" %>
+        <div class="row" style="margin-top: 12px">
+          <%= f.input :medias, as: :file,  input_html: { multiple: true }, label: "📸🎥 Media" %>
+        </div>
+
+        <%= f.submit class: "btn btn-danger btn-submit", style: "color: white" %>
+        <% end %>
+      </div>
+    </div>
   </div>
-      
-  <%= f.submit class: "btn btn-danger btn-submit", style: "color: white" %>
-  <% end %>
-</div>
-</div>
-</div>
 </div>
