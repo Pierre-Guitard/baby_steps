@@ -118,26 +118,26 @@ locations = [
 puts "creating memories - add medias later"
 
 titres = [
-  "Le Jour J : Bienvenue dans le monde, Mathias !",
-  "Les Premières Semaines : Nuits blanches et premiers sourires.",
-  "Mois 1 à 3 : Les premiers moments magiques et les découvertes du nouveau-né.",
-  "Le Premier Noël : Un moment spécial en famille avec Mathias.",
-  "Développement et Milestones : Les premiers pas, les premiers mots.",
-  "Exploration sensorielle : Toucher, goûter, voir, entendre, sentir.",
-  "Le Monde en Couleurs : Les premières réactions face aux couleurs et formes.",
-  "Les Moments de Complicité : Premiers jeux et câlins avec papa et maman.",
-  "Les Premières Sorties : Découvrir le monde extérieur avec Mathias.",
-  "La Routine du Coucher : Histoires, berceuses et rituels apaisants.",
-  "Famille et Amis : Les premières rencontres et liens affectifs.",
-  "Les Étapes de l'alimentation : Des biberons aux premiers repas solides.",
-  "Exploration Créative : Les premiers dessins, bricolages et créations.",
-  "Voyage dans le Temps : Comparaisons entre le premier et le deuxième anniversaire.",
-  "La Fête du Deuxième Anniversaire : Célébration et réflexions sur ces 24 premiers mois incroyables."
+  "Le Jour J",
+  "Les Premières Semaines",
+  "Mois 1 à 3",
+  "Le Premier Noël",
+  "Développement et Milestones",
+  "Exploration sensorielle",
+  "Le Monde en Couleurs",
+  "Les Moments de Complicité",
+  "Les Premières Sorties",
+  "La Routine du Coucher",
+  "Famille et Amis",
+  "Les Étapes de l'alimentation",
+  "Exploration Créative",
+  "Voyage dans le Temps",
+  "Le Deuxième Anniversaire"
 ]
 
 index = 0
 
-5.times do
+15.times do
   memory = Memory.new(
     date: "#{rand(2020..2022)}-#{rand(1..12)}-#{rand(1..28)}",
     title: titres[index],
@@ -165,19 +165,27 @@ end
 
 puts "creating key_memories"
 
+seed_events = [
+  "roll over",
+  "",
+  "standing",
+  "walking",
+  ""
+]
+
 Memory.all.each do |memory|
   if memory.date.to_date > "2023-02-12".to_date
     key_memory1 = KeyMemory.new(
       baby: Baby.find_by(first_name: "gustave"),
       memory: memory,
-      event: KeyMemory::EVENTS.sample
+      event: seed_events.sample
     )
     key_memory1.save!
     puts "created key_memory"
     key_memory2 = KeyMemory.new(
       baby: Baby.find_by(first_name: "mathias"),
       memory: memory,
-      event: KeyMemory::EVENTS.sample
+      event: seed_events.sample
     )
     key_memory2.save!
     puts "created key_memory"
@@ -185,7 +193,7 @@ Memory.all.each do |memory|
     key_memory = KeyMemory.new(
       baby: Baby.find_by(first_name: "mathias"),
       memory: memory,
-      event: KeyMemory::EVENTS.sample
+      event: seed_events.sample
     )
     key_memory.save!
     puts "created key_memory"
@@ -237,10 +245,13 @@ seed_medias = ["A7300234.jpeg",
           "IMG_4450.jpeg",
           "IMG_4586.jpeg"]
 
+index_photo = 0
+
 Memory.all.each do |memory|
   rand(1..2).times do
-    image = File.open(Rails.root.join("app/assets/images/seed/#{seed_medias.sample}"))
+    image = File.open(Rails.root.join("app/assets/images/seed/#{seed_medias[index_photo]}"))
     memory.medias.attach(io: image, filename: "photo_#{rand(1..9999999)}.jpg", content_type: "image/jpg")
+    index_photo += 1
     puts "added photo"
   end
   puts "added medias to memory"
@@ -256,16 +267,12 @@ memory1 = Memory.new(
   user: romain
 )
 memory1.save!
-ActionText::RichText.create!(record_type: 'Memory', record_id: memory1.id, name: 'content', body: "<p>Aujourd'hui, un moment magique s'est produit dans la vie de Mathias. À l'âge de 11 mois, il a entrepris son tout premier voyage en quattre pattes. Les yeux brillants d'excitation, il a déployé toute son énergie pour explorer le monde qui l'entoure.</p>
-  <p>Les premiers pas hésitants se sont transformés en mouvements plus assurés, et notre petit explorateur a commencé à parcourir la pièce avec une curiosité infinie. C'était un spectacle incroyable de voir sa petite silhouette se déplacer avec tant de détermination.</p>
-  <p>À cet instant, le salon est devenu un terrain d'aventure infini pour Mathias. Chaque coin, chaque recoin, était une nouvelle découverte passionnante. Les sourires radieux et les petits gazouillis joyeux remplissaient l'air, créant une atmosphère de bonheur pur.</p>
-  <p>Les parents émerveillés ont immortalisé ce moment avec des medias et des vidéos, capturant les premiers pas indépendants de Mathias dans le monde de la mobilité. C'est un pas de plus vers son développement, et chaque instant de cette journée restera gravé dans nos mémoires comme une étape inoubliable de sa petite vie pleine d'aventures.</p>")
+ActionText::RichText.create!(record_type: 'Memory', record_id: memory1.id, name: 'content', body: "<p>Aujourd'hui, un moment magique s'est produit dans la vie de Mathias. <strong>À l'âge de 11 mois</strong>, il a entrepris son tout premier voyage en quattre pattes. Les yeux brillants d'excitation, il a déployé toute son énergie pour explorer le monde qui l'entoure.</p>
+  <p>Les premiers pas hésitants se sont transformés en mouvements plus assurés, et notre petit explorateur a commencé à parcourir la pièce avec une curiosité infinie. C'était un spectacle incroyable de voir sa petite silhouette se déplacer avec tant de détermination.</p>")
 puts "Created specific memory 1"
 
 Comment.create!(
-  content: "La première fois que j'ai vu Mathias se déplacer à quatre pattes, mon cœur s'est rempli d'une joie indescriptible. C'est incroyable de voir à quel point il a grandi et gagné en indépendance. Ses petits pas hésitants ont donné le coup d'envoi à une nouvelle aventure, et je suis tellement fière de son exploration intrépide du monde qui l'entoure.
-  Les rires et les sourires de Mathias ont illuminé la pièce, créant des souvenirs précieux que nous chérirons toujours. C'est une étape mémorable, et je suis impatiente de partager de nombreux moments similaires alors qu'il continue de grandir. Mon cœur de maman déborde de bonheur et de gratitude envers chaque petite étape de son voyage.
-",
+  content: "La première fois que j'ai vu Mathias se déplacer à quatre pattes, mon cœur s'est rempli d'une joie indescriptible. C'est incroyable de voir à quel point il a grandi et gagné en indépendance. Ses petits pas hésitants ont donné le coup d'envoi à une nouvelle aventure, et je suis tellement fière de son exploration intrépide du monde qui l'entoure.",
   memory: memory1,
   user: maud
 )
@@ -278,7 +285,7 @@ KeyMemory.create!(
 )
 puts "Created specific key memory 1"
 
-photo1 = File.open(Rails.root.join("app/assets/images/seed/IMG_3088.jpeg"))
+photo1 = File.open(Rails.root.join("app/assets/images/seed/IMG_3143.jpeg"))
 memory1.medias.attach(io: photo1, filename: "photo_#{rand(1..9999999)}.jpg", content_type: "image/jpg")
 video1 = File.open(Rails.root.join("app/assets/images/seed/2021-10-20 - IMG_2472.mp4"))
 memory1.medias.attach(io: video1, filename: "video_#{rand(1..9999999)}.mp4", content_type: "video/mp4")
@@ -317,26 +324,26 @@ photo2 = File.open(Rails.root.join("app/assets/images/seed/2021-09-17 - IMG_4285
 memory2.medias.attach(io: photo2, filename: "photo_#{rand(1..9999999)}.jpg", content_type: "image/jpg")
 puts "added photo"
 
-memory3 = Memory.new(
-  date: "2023-11-20",
-  title: "Gustave a fait du quattre pattes pour la première fois !",
-  location: "135 rue de Fontenay 94300 Vincennes",
-  user: maud
-)
-memory3.save!
-ActionText::RichText.create!(record_type: 'Memory', record_id: memory3.id, name: 'content', body: "<p>Aujourd'hui, un moment magique s'est produit dans la vie de Gustave. À l'âge de 11 mois, il a entrepris son tout premier voyage en quattre pattes. Les yeux brillants d'excitation, il a déployé toute son énergie pour explorer le monde qui l'entoure.</p>
-  <p>Les premiers pas hésitants se sont transformés en mouvements plus assurés, et notre petit explorateur a commencé à parcourir la pièce avec une curiosité infinie. C'était un spectacle incroyable de voir sa petite silhouette se déplacer avec tant de détermination.</p>
-  <p>À cet instant, le salon est devenu un terrain d'aventure infini pour Gustave. Chaque coin, chaque recoin, était une nouvelle découverte passionnante. Les sourires radieux et les petits gazouillis joyeux remplissaient l'air, créant une atmosphère de bonheur pur.</p>
-  <p>Les parents émerveillés ont immortalisé ce moment avec des medias et des vidéos, capturant les premiers pas indépendants de Gustave dans le monde de la mobilité. C'est un pas de plus vers son développement, et chaque instant de cette journée restera gravé dans nos mémoires comme une étape inoubliable de sa petite vie pleine d'aventures.</p>")
-puts "Created specific memory 3"
+# memory3 = Memory.new(
+#   date: "2023-11-20",
+#   title: "Gustave a fait du quattre pattes pour la première fois !",
+#   location: "135 rue de Fontenay 94300 Vincennes",
+#   user: maud
+# )
+# memory3.save!
+# ActionText::RichText.create!(record_type: 'Memory', record_id: memory3.id, name: 'content', body: "<p>Aujourd'hui, un moment magique s'est produit dans la vie de Gustave. À l'âge de 11 mois, il a entrepris son tout premier voyage en quattre pattes. Les yeux brillants d'excitation, il a déployé toute son énergie pour explorer le monde qui l'entoure.</p>
+#   <p>Les premiers pas hésitants se sont transformés en mouvements plus assurés, et notre petit explorateur a commencé à parcourir la pièce avec une curiosité infinie. C'était un spectacle incroyable de voir sa petite silhouette se déplacer avec tant de détermination.</p>
+#   <p>À cet instant, le salon est devenu un terrain d'aventure infini pour Gustave. Chaque coin, chaque recoin, était une nouvelle découverte passionnante. Les sourires radieux et les petits gazouillis joyeux remplissaient l'air, créant une atmosphère de bonheur pur.</p>
+#   <p>Les parents émerveillés ont immortalisé ce moment avec des medias et des vidéos, capturant les premiers pas indépendants de Gustave dans le monde de la mobilité. C'est un pas de plus vers son développement, et chaque instant de cette journée restera gravé dans nos mémoires comme une étape inoubliable de sa petite vie pleine d'aventures.</p>")
+# puts "Created specific memory 3"
 
-KeyMemory.create!(
-  baby: Baby.find_by(first_name: "gustave"),
-  memory: memory3,
-  event: "crawling"
-)
-puts "Created specific key memory 3"
+# KeyMemory.create!(
+#   baby: Baby.find_by(first_name: "gustave"),
+#   memory: memory3,
+#   event: "crawling"
+# )
+# puts "Created specific key memory 3"
 
-photo3 = File.open(Rails.root.join("app/assets/images/seed/IMG_3088.jpeg"))
-memory3.medias.attach(io: photo3, filename: "photo_#{rand(1..9999999)}.jpg", content_type: "image/jpg")
-puts "added photo"
+# photo3 = File.open(Rails.root.join("app/assets/images/seed/IMG_3088.jpeg"))
+# memory3.medias.attach(io: photo3, filename: "photo_#{rand(1..9999999)}.jpg", content_type: "image/jpg")
+# puts "added photo"
