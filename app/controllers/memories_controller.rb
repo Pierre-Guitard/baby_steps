@@ -13,7 +13,6 @@ class MemoriesController < ApplicationController
   def create
     @memory = Memory.new(post_memory)
     @memory.user = current_user
-    # raise
     if @memory.save!
       redirect_to memory_path(@memory)
     else

@@ -16,7 +16,7 @@
 
     <div class="d-none  " data-form-target="eventfield">
       <%= f.simple_fields_for :key_memories, KeyMemory.new do |key_memory_subform| %>
-        <%= key_memory_subform.input :event %>
+        <%= key_memory_subform.input :event, collection: KeyMemory::EVENTS %>
         <%= key_memory_subform.input :baby_id, as: :hidden, input_html: { data: { form_target: "input" }} %>
       <% end %>
     </div>
