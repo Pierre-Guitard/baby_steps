@@ -2,9 +2,12 @@
 
 <div class="d-flex justify-content-between align-items-center">
 <h1>My family timeline</h1>
-<% @babies.each do |baby| %>
-  <%= cl_image_tag baby.avatar.key, height: 50, class: "avatar-bordered avatar-green" %>
-<% end %>
+
+<div class="baby-avatar-container">
+  <% @babies.each do |baby| %>
+    <%= cl_image_tag baby.avatar.key, height: 50, class: "avatar-bordered", style: "border-color : #{baby.color}" %>
+  <% end %>
+</div>
   <%= render "shared/search_bar" %>
 </div>
 

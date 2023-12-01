@@ -22,7 +22,8 @@ romain = User.new(
   first_name: "romain",
   last_name: "nicault",
   nickname: "loulou",
-  birth_date: "1983-03-05"
+  birth_date: "1983-03-05",
+  color: "#FFA69E"
 )
 
 avatarromain = File.open(Rails.root.join("app/assets/images/seed/romain.jpg"))
@@ -37,7 +38,8 @@ maud = User.new(
   first_name: "maud",
   last_name: "courthez",
   nickname: "chérie",
-  birth_date: "1986-05-03"
+  birth_date: "1986-05-03",
+  color: "#FAF3DD"
 )
 avatarmaud = File.open(Rails.root.join("app/assets/images/seed/maud.jpg"))
 maud.avatar.attach(io: avatarmaud, filename: "maud.jpg", content_type: "image/jpg")
@@ -52,7 +54,8 @@ mathias = Baby.new(
   last_name: "nicault",
   nickname: "petit chat",
   birth_date: "2020-12-04",
-  sex: "male"
+  sex: "male",
+  color: "#B8F2E6"
 )
 avatarmathias = File.open(Rails.root.join("app/assets/images/seed/mathias.jpg"))
 mathias.avatar.attach(io: avatarmathias, filename: "mathias.jpg", content_type: "image/jpg")
@@ -64,7 +67,8 @@ gustave = Baby.new(
   last_name: "nicault",
   nickname: "gugus",
   birth_date: "2023-02-12",
-  sex: "male"
+  sex: "male",
+  color: "#AED9E0"
 )
 avatargustave = File.open(Rails.root.join("app/assets/images/seed/gustave.jpg"))
 gustave.avatar.attach(io: avatargustave, filename: "gustave.jpg", content_type: "image/jpg")
