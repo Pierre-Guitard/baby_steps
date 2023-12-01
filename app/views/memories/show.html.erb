@@ -67,7 +67,7 @@
     <% end %>
   </div>
   <% end %>
-  <% if @linked_memories[0].length != 0 %>
+  <% if @linked_memories.length != 0 && @linked_memories[0].length != 0 %>
   <div class="linked-events">
   <h2>Related Memories</h2>
   <% @linked_memories.each do |memory_array| %>
