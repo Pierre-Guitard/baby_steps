@@ -133,7 +133,7 @@ titres = [
 
 index = 0
 
-15.times do
+5.times do
   memory = Memory.new(
     date: "#{rand(2020..2022)}-#{rand(1..12)}-#{rand(1..28)}",
     title: titres[index],
@@ -234,7 +234,7 @@ seed_photos = ["A7300234.jpeg",
           "IMG_4586.jpeg"]
 
 Memory.all.each do |memory|
-  rand(2..3).times do
+  rand(1..2).times do
     image = File.open(Rails.root.join("app/assets/images/seed/#{seed_photos.sample}"))
     memory.photos.attach(io: image, filename: "photo_#{rand(1..9999999)}.jpg", content_type: "image/jpg")
     puts "added photo"
@@ -274,6 +274,8 @@ KeyMemory.create!(
 )
 puts "Created specific key memory 1"
 
+photo1 = File.open(Rails.root.join("app/assets/images/seed/IMG_3088.jpeg"))
+memory1.photos.attach(io: photo1, filename: "photo_#{rand(1..9999999)}.jpg", content_type: "image/jpg")
 video1 = File.open(Rails.root.join("app/assets/images/seed/2021-10-20 - IMG_2472.mp4"))
 memory1.photos.attach(io: video1, filename: "video_#{rand(1..9999999)}.mp4", content_type: "video/mp4")
 puts "added video"
@@ -307,9 +309,9 @@ KeyMemory.create!(
 )
 puts "Created specific key memory 2"
 
-photo1 = File.open(Rails.root.join("app/assets/images/seed/2021-09-17 - IMG_4285.jpeg"))
-memory2.photos.attach(io: photo1, filename: "photo_#{rand(1..9999999)}.jpg", content_type: "image/jpg")
-puts "added video"
+photo2 = File.open(Rails.root.join("app/assets/images/seed/2021-09-17 - IMG_4285.jpeg"))
+memory2.photos.attach(io: photo2, filename: "photo_#{rand(1..9999999)}.jpg", content_type: "image/jpg")
+puts "added photo"
 
 memory3 = Memory.new(
   date: "2023-11-20",
@@ -330,3 +332,7 @@ KeyMemory.create!(
   event: "crawling"
 )
 puts "Created specific key memory 3"
+
+photo3 = File.open(Rails.root.join("app/assets/images/seed/IMG_3088.jpeg"))
+memory3.photos.attach(io: photo3, filename: "photo_#{rand(1..9999999)}.jpg", content_type: "image/jpg")
+puts "added photo"
