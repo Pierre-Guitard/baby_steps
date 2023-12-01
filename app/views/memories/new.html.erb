@@ -6,7 +6,7 @@
 
     <%= f.input :location %>
 
-    <%= f.input :date, as: :string %>
+    <%= f.input :date, as: :string, :input_html => { :class => 'date_picker' } %>
 
     <%= f.rich_text_area :content %>
 
