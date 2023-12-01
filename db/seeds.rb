@@ -111,7 +111,7 @@ locations = [
   "12 Rte du Sémaphore, 29630 Plougasnou"
 ]
 
-puts "creating memories - add photos later"
+puts "creating memories - add medias later"
 
 titres = [
   "Le Jour J : Bienvenue dans le monde, Mathias !",
@@ -188,9 +188,9 @@ Memory.all.each do |memory|
   end
 end
 
-# add photos to memories
+# add medias to memories
 
-seed_photos = ["A7300234.jpeg",
+seed_medias = ["A7300234.jpeg",
           "A7300371.jpeg",
           "A7300787.jpeg",
           "A7300825.jpeg",
@@ -235,11 +235,11 @@ seed_photos = ["A7300234.jpeg",
 
 Memory.all.each do |memory|
   rand(1..2).times do
-    image = File.open(Rails.root.join("app/assets/images/seed/#{seed_photos.sample}"))
-    memory.photos.attach(io: image, filename: "photo_#{rand(1..9999999)}.jpg", content_type: "image/jpg")
+    image = File.open(Rails.root.join("app/assets/images/seed/#{seed_medias.sample}"))
+    memory.medias.attach(io: image, filename: "photo_#{rand(1..9999999)}.jpg", content_type: "image/jpg")
     puts "added photo"
   end
-  puts "added photos to memory"
+  puts "added medias to memory"
 end
 
 
@@ -255,7 +255,7 @@ memory1.save!
 ActionText::RichText.create!(record_type: 'Memory', record_id: memory1.id, name: 'content', body: "<p>Aujourd'hui, un moment magique s'est produit dans la vie de Mathias. À l'âge de 11 mois, il a entrepris son tout premier voyage en quattre pattes. Les yeux brillants d'excitation, il a déployé toute son énergie pour explorer le monde qui l'entoure.</p>
   <p>Les premiers pas hésitants se sont transformés en mouvements plus assurés, et notre petit explorateur a commencé à parcourir la pièce avec une curiosité infinie. C'était un spectacle incroyable de voir sa petite silhouette se déplacer avec tant de détermination.</p>
   <p>À cet instant, le salon est devenu un terrain d'aventure infini pour Mathias. Chaque coin, chaque recoin, était une nouvelle découverte passionnante. Les sourires radieux et les petits gazouillis joyeux remplissaient l'air, créant une atmosphère de bonheur pur.</p>
-  <p>Les parents émerveillés ont immortalisé ce moment avec des photos et des vidéos, capturant les premiers pas indépendants de Mathias dans le monde de la mobilité. C'est un pas de plus vers son développement, et chaque instant de cette journée restera gravé dans nos mémoires comme une étape inoubliable de sa petite vie pleine d'aventures.</p>")
+  <p>Les parents émerveillés ont immortalisé ce moment avec des medias et des vidéos, capturant les premiers pas indépendants de Mathias dans le monde de la mobilité. C'est un pas de plus vers son développement, et chaque instant de cette journée restera gravé dans nos mémoires comme une étape inoubliable de sa petite vie pleine d'aventures.</p>")
 puts "Created specific memory 1"
 
 Comment.create!(
@@ -275,9 +275,9 @@ KeyMemory.create!(
 puts "Created specific key memory 1"
 
 photo1 = File.open(Rails.root.join("app/assets/images/seed/IMG_3088.jpeg"))
-memory1.photos.attach(io: photo1, filename: "photo_#{rand(1..9999999)}.jpg", content_type: "image/jpg")
+memory1.medias.attach(io: photo1, filename: "photo_#{rand(1..9999999)}.jpg", content_type: "image/jpg")
 video1 = File.open(Rails.root.join("app/assets/images/seed/2021-10-20 - IMG_2472.mp4"))
-memory1.photos.attach(io: video1, filename: "video_#{rand(1..9999999)}.mp4", content_type: "video/mp4")
+memory1.medias.attach(io: video1, filename: "video_#{rand(1..9999999)}.mp4", content_type: "video/mp4")
 puts "added video"
 
 memory2 = Memory.new(
@@ -310,7 +310,7 @@ KeyMemory.create!(
 puts "Created specific key memory 2"
 
 photo2 = File.open(Rails.root.join("app/assets/images/seed/2021-09-17 - IMG_4285.jpeg"))
-memory2.photos.attach(io: photo2, filename: "photo_#{rand(1..9999999)}.jpg", content_type: "image/jpg")
+memory2.medias.attach(io: photo2, filename: "photo_#{rand(1..9999999)}.jpg", content_type: "image/jpg")
 puts "added photo"
 
 memory3 = Memory.new(
@@ -323,7 +323,7 @@ memory3.save!
 ActionText::RichText.create!(record_type: 'Memory', record_id: memory3.id, name: 'content', body: "<p>Aujourd'hui, un moment magique s'est produit dans la vie de Gustave. À l'âge de 11 mois, il a entrepris son tout premier voyage en quattre pattes. Les yeux brillants d'excitation, il a déployé toute son énergie pour explorer le monde qui l'entoure.</p>
   <p>Les premiers pas hésitants se sont transformés en mouvements plus assurés, et notre petit explorateur a commencé à parcourir la pièce avec une curiosité infinie. C'était un spectacle incroyable de voir sa petite silhouette se déplacer avec tant de détermination.</p>
   <p>À cet instant, le salon est devenu un terrain d'aventure infini pour Gustave. Chaque coin, chaque recoin, était une nouvelle découverte passionnante. Les sourires radieux et les petits gazouillis joyeux remplissaient l'air, créant une atmosphère de bonheur pur.</p>
-  <p>Les parents émerveillés ont immortalisé ce moment avec des photos et des vidéos, capturant les premiers pas indépendants de Gustave dans le monde de la mobilité. C'est un pas de plus vers son développement, et chaque instant de cette journée restera gravé dans nos mémoires comme une étape inoubliable de sa petite vie pleine d'aventures.</p>")
+  <p>Les parents émerveillés ont immortalisé ce moment avec des medias et des vidéos, capturant les premiers pas indépendants de Gustave dans le monde de la mobilité. C'est un pas de plus vers son développement, et chaque instant de cette journée restera gravé dans nos mémoires comme une étape inoubliable de sa petite vie pleine d'aventures.</p>")
 puts "Created specific memory 3"
 
 KeyMemory.create!(
@@ -334,5 +334,5 @@ KeyMemory.create!(
 puts "Created specific key memory 3"
 
 photo3 = File.open(Rails.root.join("app/assets/images/seed/IMG_3088.jpeg"))
-memory3.photos.attach(io: photo3, filename: "photo_#{rand(1..9999999)}.jpg", content_type: "image/jpg")
+memory3.medias.attach(io: photo3, filename: "photo_#{rand(1..9999999)}.jpg", content_type: "image/jpg")
 puts "added photo"
