@@ -38,4 +38,15 @@
       max-width: 100% !important;
     }
   }
+
+  // .trix-toolbar .trix-button-row {
+  //   flex-wrap: wrap;
+  //   width: 100%;
+  // }
+  }
+
+/* Ajustez la largeur des éléments internes pour qu'ils s'ajustent correctement */
+.trix-button-group--file-tools,
+.trix-button.trix-button--icon.trix-button--icon-code {
+  display: none !important;
 }

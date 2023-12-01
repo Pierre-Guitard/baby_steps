@@ -1,27 +1,48 @@
+<div class="container-home">
 <h1>Create a new memory</h1>
 
+<div class="container col-11">
+
+<div class="row justify-content-center">
+
 <div class="form" data-controller="form">
+
   <%= simple_form_for @memory do |f| %>
-    <%= f.input :title %>
 
-    <%= f.input :location %>
+  <div class="row">
+    <%= f.input :title, label: "✍️ Title", placeholder: "Enter a title" %>
+  </div>
 
-    <%= f.input :date %>
+  <div class="d-flex justify-content-between">
+  <div class="col-5">
+    <%= f.input :location, label: "📍Location", placeholder: "City" %>
+  </div>
+  <div class="col-5">
+    <%= f.input :date, label: "📅 Date" %>
+  </div>
+  </div>
 
-    <%= f.rich_text_area :content %>
 
-    <%= f.input :photos, as: :file %>
+  <div class="mb-6">
+  <%= f.rich_text_area :content, label: "✍️ Description", placeholder: "Write a description" %>
+  </div>
 
+  <div class="row" style="margin-top: 12px">
+    <%= f.input :photos, as: :file, label: "📸🎥 Media" %>
+  </div>
+
+  <div class="row">
     <%= f.input :clips, as: :file %>
+  </div>
 
-    <div class="d-none  " data-form-target="eventfield">
+    <div class="d-none" data-form-target="eventfield">
       <%= f.simple_fields_for :key_memories, KeyMemory.new do |key_memory_subform| %>
-        <%= key_memory_subform.input :event, collection: KeyMemory::EVENTS %>
+        <%= key_memory_subform.input :event, label: "🥇 Event", placeholder: "Choose a key event", collection: KeyMemory::EVENTS %>
         <%= key_memory_subform.input :baby_id, as: :hidden, input_html: { data: { form_target: "input" }} %>
       <% end %>
     </div>
 
-    <%= f.submit %>
+    <%= f.submit class: "btn btn-danger btn-submit", style: "color: white" %>
   <% end %>
 
 
@@ -31,4 +52,7 @@
       <%# <%= cl_image_tag baby.photos.first.key, class: "avatar-bordered  avatar-blue" %>
     <% end %>
   </div>
+</div>
+</div>
+</div>
 </div>
