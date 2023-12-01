@@ -24,6 +24,9 @@ romain = User.new(
   nickname: "loulou",
   birth_date: "1983-03-05"
 )
+
+avatarromain = File.open(Rails.root.join("app/assets/images/seed/romain.jpg"))
+romain.avatar.attach(io: avatarromain, filename: "romain.jpg", content_type: "image/jpg")
 romain.save!
 puts "user romain created"
 
@@ -36,6 +39,8 @@ maud = User.new(
   nickname: "chérie",
   birth_date: "1986-05-03"
 )
+avatarmaud = File.open(Rails.root.join("app/assets/images/seed/maud.jpg"))
+maud.avatar.attach(io: avatarmaud, filename: "maud.jpg", content_type: "image/jpg")
 maud.save!
 puts "user maud created"
 
@@ -49,6 +54,8 @@ mathias = Baby.new(
   birth_date: "2020-12-04",
   sex: "male"
 )
+avatarmathias = File.open(Rails.root.join("app/assets/images/seed/mathias.jpg"))
+mathias.avatar.attach(io: avatarmathias, filename: "mathias.jpg", content_type: "image/jpg")
 mathias.save!
 puts "baby mathias created"
 
@@ -59,6 +66,8 @@ gustave = Baby.new(
   birth_date: "2023-02-12",
   sex: "male"
 )
+avatargustave = File.open(Rails.root.join("app/assets/images/seed/gustave.jpg"))
+gustave.avatar.attach(io: avatargustave, filename: "gustave.jpg", content_type: "image/jpg")
 gustave.save!
 puts "baby gustave created"
 
@@ -103,16 +112,38 @@ locations = [
 ]
 
 puts "creating memories - add photos later"
-5.times do
+
+titres = [
+  "Le Jour J : Bienvenue dans le monde, Mathias !",
+  "Les Premières Semaines : Nuits blanches et premiers sourires.",
+  "Mois 1 à 3 : Les premiers moments magiques et les découvertes du nouveau-né.",
+  "Le Premier Noël : Un moment spécial en famille avec Mathias.",
+  "Développement et Milestones : Les premiers pas, les premiers mots.",
+  "Exploration sensorielle : Toucher, goûter, voir, entendre, sentir.",
+  "Le Monde en Couleurs : Les premières réactions face aux couleurs et formes.",
+  "Les Moments de Complicité : Premiers jeux et câlins avec papa et maman.",
+  "Les Premières Sorties : Découvrir le monde extérieur avec Mathias.",
+  "La Routine du Coucher : Histoires, berceuses et rituels apaisants.",
+  "Famille et Amis : Les premières rencontres et liens affectifs.",
+  "Les Étapes de l'alimentation : Des biberons aux premiers repas solides.",
+  "Exploration Créative : Les premiers dessins, bricolages et créations.",
+  "Voyage dans le Temps : Comparaisons entre le premier et le deuxième anniversaire.",
+  "La Fête du Deuxième Anniversaire : Célébration et réflexions sur ces 24 premiers mois incroyables."
+]
+
+index = 0
+
+15.times do
   memory = Memory.new(
-    date: "#{rand(2020..2023)}-#{rand(1..12)}-#{rand(1..28)}",
-    title: Faker::Movie.title,
-    content: Faker::Lorem.paragraph(sentence_count: rand(8..15)),
+    date: "#{rand(2020..2022)}-#{rand(1..12)}-#{rand(1..28)}",
+    title: titres[index],
     location: locations.sample,
     user: User.all.sample
   )
   memory.save!
+  ActionText::RichText.create!(record_type: 'Memory', record_id: memory.id, name: 'content', body: Faker::Lorem.sentence)
   puts "Created memory"
+  index += 1
 end
 
 # create comments
@@ -130,42 +161,19 @@ end
 
 puts "creating key_memories"
 
-events = [
-  "Birth - length and weight",
-  "Return home",
-  "First outing",
-  "First smile",
-  "First bath at home",
-  "First roll over",
-  "First travel",
-  "First sitting",
-  "First crawling",
-  "Standing",
-  "First steps",
-  "First tooth",
-  "First word",
-  "First full night",
-  "First day of care",
-  "First purée",
-  "First solid food",
-  "First meeting a cousin",
-  "",
-  "First haircut"
-]
-
 Memory.all.each do |memory|
   if memory.date.to_date > "2023-02-12".to_date
     key_memory1 = KeyMemory.new(
       baby: Baby.find_by(first_name: "gustave"),
       memory: memory,
-      event: events.sample
+      event: KeyMemory::EVENTS.sample
     )
     key_memory1.save!
     puts "created key_memory"
     key_memory2 = KeyMemory.new(
       baby: Baby.find_by(first_name: "mathias"),
       memory: memory,
-      event: events.sample
+      event: KeyMemory::EVENTS.sample
     )
     key_memory2.save!
     puts "created key_memory"
@@ -173,7 +181,7 @@ Memory.all.each do |memory|
     key_memory = KeyMemory.new(
       baby: Baby.find_by(first_name: "mathias"),
       memory: memory,
-      event: events.sample
+      event: KeyMemory::EVENTS.sample
     )
     key_memory.save!
     puts "created key_memory"
@@ -233,3 +241,92 @@ Memory.all.each do |memory|
   end
   puts "added photos to memory"
 end
+
+
+# create specific memories
+
+memory1 = Memory.new(
+  date: "2021-10-20",
+  title: "Mathias a fait du quattre pattes pour la première fois !",
+  location: "135 rue de Fontenay 94300 Vincennes",
+  user: romain
+)
+memory1.save!
+ActionText::RichText.create!(record_type: 'Memory', record_id: memory1.id, name: 'content', body: "<p>Aujourd'hui, un moment magique s'est produit dans la vie de Mathias. À l'âge de 11 mois, il a entrepris son tout premier voyage en quattre pattes. Les yeux brillants d'excitation, il a déployé toute son énergie pour explorer le monde qui l'entoure.</p>
+  <p>Les premiers pas hésitants se sont transformés en mouvements plus assurés, et notre petit explorateur a commencé à parcourir la pièce avec une curiosité infinie. C'était un spectacle incroyable de voir sa petite silhouette se déplacer avec tant de détermination.</p>
+  <p>À cet instant, le salon est devenu un terrain d'aventure infini pour Mathias. Chaque coin, chaque recoin, était une nouvelle découverte passionnante. Les sourires radieux et les petits gazouillis joyeux remplissaient l'air, créant une atmosphère de bonheur pur.</p>
+  <p>Les parents émerveillés ont immortalisé ce moment avec des photos et des vidéos, capturant les premiers pas indépendants de Mathias dans le monde de la mobilité. C'est un pas de plus vers son développement, et chaque instant de cette journée restera gravé dans nos mémoires comme une étape inoubliable de sa petite vie pleine d'aventures.</p>")
+puts "Created specific memory 1"
+
+Comment.create!(
+  content: "La première fois que j'ai vu Mathias se déplacer à quatre pattes, mon cœur s'est rempli d'une joie indescriptible. C'est incroyable de voir à quel point il a grandi et gagné en indépendance. Ses petits pas hésitants ont donné le coup d'envoi à une nouvelle aventure, et je suis tellement fière de son exploration intrépide du monde qui l'entoure.
+  Les rires et les sourires de Mathias ont illuminé la pièce, créant des souvenirs précieux que nous chérirons toujours. C'est une étape mémorable, et je suis impatiente de partager de nombreux moments similaires alors qu'il continue de grandir. Mon cœur de maman déborde de bonheur et de gratitude envers chaque petite étape de son voyage.
+",
+  memory: memory1,
+  user: maud
+)
+puts "Created specific comment 1"
+
+KeyMemory.create!(
+  baby: Baby.find_by(first_name: "mathias"),
+  memory: memory1,
+  event: "Crawling"
+)
+puts "Created specific key memory 1"
+
+video1 = File.open(Rails.root.join("app/assets/images/seed/2021-10-20 - IMG_2472.mp4"))
+memory1.photos.attach(io: video1, filename: "video_#{rand(1..9999999)}.mp4", content_type: "video/mp4")
+puts "added video"
+
+memory2 = Memory.new(
+  date: "2021-09-17",
+  title: "Prêt pour le vélo 🚲 !",
+  location: "135 rue de Fontenay 94300 Vincennes",
+  user: maud
+)
+memory2.save!
+ActionText::RichText.create!(record_type: 'Memory', record_id: memory2.id, name: 'content', body: "  <p>Une étape excitante dans la vie de Mathias : il a maintenant son propre casque de vélo, prêt pour de nouvelles aventures sur deux roues ! Aujourd'hui, nous avons fixé avec émotion son petit casque coloré et l'avons installé sur le siège enfant du vélo.</p>
+  <p>Ses yeux pétillaient d'excitation alors que nous nous apprêtions à commencer notre balade à vélo. Le cliquetis du casque et le bruit joyeux de sa voix résonnaient dans l'air, créant une ambiance de joie et d'aventure.</p>
+  <p>C'est incroyable de voir à quel point il grandit, de passer de spectateur à co-pilote sur nos escapades à vélo. Les premiers tours de roue avec son petit rire au vent sont des moments que nous chérirons à jamais. Une nouvelle page s'ouvre dans son livre d'aventures, et nous sommes impatients de partager de nombreuses balades ensemble.</p>
+")
+puts "Created specific memory 2"
+
+Comment.create!(
+  content: "Le moment où Mathias a mis son casque de vélo pour la première fois restera gravé dans ma mémoire. Ses yeux pétillants de curiosité et d'excitation ont été la meilleure récompense pour cette nouvelle étape.
+L'ajustement du casque, les premiers tours de roue ensemble, chaque instant était chargé d'une énergie contagieuse. La sensation de partager ma passion pour le vélo avec lui était indescriptible, un moment père-fils que je chérirai toujours.
+À chaque son de son rire dans le siège enfant, je pouvais sentir l'aventure se déployer sous nos roues. C'est le début d'une série de balades à vélo mémorables, et je suis impatient de partager de nombreux kilomètres de bonheur sur deux roues avec mon petit coéquipier.",
+  memory: memory2,
+  user: romain
+)
+puts "Created specific comment 1"
+
+KeyMemory.create!(
+  baby: Baby.find_by(first_name: "mathias"),
+  memory: memory2,
+  event: ""
+)
+puts "Created specific key memory 2"
+
+photo1 = File.open(Rails.root.join("app/assets/images/seed/2021-09-17 - IMG_4285.jpeg"))
+memory2.photos.attach(io: photo1, filename: "photo_#{rand(1..9999999)}.jpg", content_type: "image/jpg")
+puts "added video"
+
+memory3 = Memory.new(
+  date: "2023-11-20",
+  title: "Gustave a fait du quattre pattes pour la première fois !",
+  location: "135 rue de Fontenay 94300 Vincennes",
+  user: maud
+)
+memory3.save!
+ActionText::RichText.create!(record_type: 'Memory', record_id: memory3.id, name: 'content', body: "<p>Aujourd'hui, un moment magique s'est produit dans la vie de Gustave. À l'âge de 11 mois, il a entrepris son tout premier voyage en quattre pattes. Les yeux brillants d'excitation, il a déployé toute son énergie pour explorer le monde qui l'entoure.</p>
+  <p>Les premiers pas hésitants se sont transformés en mouvements plus assurés, et notre petit explorateur a commencé à parcourir la pièce avec une curiosité infinie. C'était un spectacle incroyable de voir sa petite silhouette se déplacer avec tant de détermination.</p>
+  <p>À cet instant, le salon est devenu un terrain d'aventure infini pour Gustave. Chaque coin, chaque recoin, était une nouvelle découverte passionnante. Les sourires radieux et les petits gazouillis joyeux remplissaient l'air, créant une atmosphère de bonheur pur.</p>
+  <p>Les parents émerveillés ont immortalisé ce moment avec des photos et des vidéos, capturant les premiers pas indépendants de Gustave dans le monde de la mobilité. C'est un pas de plus vers son développement, et chaque instant de cette journée restera gravé dans nos mémoires comme une étape inoubliable de sa petite vie pleine d'aventures.</p>")
+puts "Created specific memory 3"
+
+KeyMemory.create!(
+  baby: Baby.find_by(first_name: "gustave"),
+  memory: memory3,
+  event: "Crawling"
+)
+puts "Created specific key memory 3"

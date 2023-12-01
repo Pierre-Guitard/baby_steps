@@ -56,7 +56,7 @@
       data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
     </div>
   </div>
-
+  <% if @comments.length != 0 %>
   <div class="memory-comments">
     <h2>Comments</h2>
     <% @comments.each do |comment| %>
@@ -65,5 +65,18 @@
         <p class="text-end nickname-font"><%= comment.user.nickname.capitalize() %></p>
       </div>
     <% end %>
+  </div>
+  <% end %>
+  <% if @linked_memories[0].length != 0 %>
+  <div class="linked-events">
+  <h2>Related Memories</h2>
+  <% @linked_memories.each do |memory_array| %>
+    <% memory_array.each do |memory| %>
+      <div class="linked-memory">
+       <%= link_to "#{memory.key_memories[0].baby.nickname.capitalize()} - First time #{memory.key_memories[0].event}", memory_path(memory) %>
+      </div>
+    <% end %>
+  <% end %>
+  <% end %>
   </div>
 </div>

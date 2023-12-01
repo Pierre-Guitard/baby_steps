@@ -6,9 +6,8 @@ class Memory < ApplicationRecord
   has_rich_text :content
   has_many_attached :photos
   has_many_attached :clips
-  validates :date, :title, :content, :user_id, :location, presence: true
+  validates :date, :title, :user_id, :location, presence: true
   validates :title, length: { minimum: 4 }
-  validates :content, length: { minimum: 10 }
   geocoded_by :location
   after_validation :geocode, if: :will_save_change_to_location?
   accepts_nested_attributes_for :key_memories

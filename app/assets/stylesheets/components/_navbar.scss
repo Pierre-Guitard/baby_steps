@@ -10,3 +10,15 @@
 .navbar-lewagon .navbar-brand img {
   width: 40px;
 }
+
+.navbar-lewagon .navbar-toggler {
+  border: none; /* Supprime le cadre gris */
+}
+
+.nav-item {
+  text-align-last: right;
+}
+
+.icon-bell {
+  color: $green;
+}
