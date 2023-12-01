@@ -3,7 +3,7 @@
     <div class="memory-date">
       <p><%= @memory.date %></p>
     </div>
-    <div class="memory-buttons">
+    <div class="memory-buttons">x
       <p> Add buttons </p>
     </div>
   </div>
@@ -12,11 +12,9 @@
       <h1><%= @memory.title %></h1>
     </div>
     <div class="babies-avatar">
-    <p>
       <% @babies.each do |baby| %>
-        <%= baby.nickname.capitalize() %>
+        <%= cl_image_tag baby.avatar.key, height: 50, class: "avatar-bordered avatar-green" %>
       <% end %>
-    </p>
     </div>
   </div>
   <div class="memory-content">
