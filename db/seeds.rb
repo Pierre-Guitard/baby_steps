@@ -262,7 +262,7 @@ end
 
 memory1 = Memory.new(
   date: "2021-10-20",
-  title: "Mathias a fait du quattre pattes pour la première fois !",
+  title: "Mathias a fait du quatre pattes pour la première fois !",
   location: "135 rue de Fontenay 94300 Vincennes",
   user: romain
 )
