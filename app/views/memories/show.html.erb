@@ -25,7 +25,7 @@
   <div class="author-signature text-end nickname-font">
   <p><%= @memory.user.nickname.capitalize() %></p>
   </div>
-  <div class="memory-photos d-flex w-100">
+  <div class="memory-medias d-flex w-100">
     <% @memory.medias.each_with_index do |media, index| %>
       <% if index == 0%>
         <% if media.content_type.end_with?("mp4") %>
@@ -38,7 +38,7 @@
           </div>
         <% end %>
       <% else %>
-         <% if media.content_type.end_with?("mp4") %>
+        <% if media.content_type.end_with?("mp4") %>
           <div class="image-container w-50">
               <video width="75" height="75" controls src="<%= cl_video_path(media.key) %>"></video>
           </div>
@@ -68,14 +68,15 @@
     </div>
   <% end %>
   <% if @linked_memories.length != 0 && @linked_memories[0].length != 0 %>
-  <div class="linked-events">
-  <h2>Related Memories</h2>
-  <% @linked_memories.each do |memory_array| %>
-    <% memory_array.each do |memory| %>
-      <div class="linked-memory">
-       <%= link_to "#{memory.key_memories[0].baby.nickname.capitalize()} - First time #{memory.key_memories[0].event}", memory_path(memory) %>
-      </div>
-    <% end %>
+    <div class="linked-events">
+      <h2>Related Memories</h2>
+      <% @linked_memories.each do |memory_array| %>
+        <% memory_array.each do |memory| %>
+          <div class="linked-memory">
+            <%= link_to "#{memory.key_memories[0].baby.nickname.capitalize()} - First time #{memory.key_memories[0].event}", memory_path(memory) %>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
   <% end %>
-  </div>
 </div>

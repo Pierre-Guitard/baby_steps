@@ -11,7 +11,7 @@
     <% @memories.each do |memory| %>
       <%# <%= link_to_memory_path(memory) do %>
         <div class="card-memory">
-          <%= cl_image_tag(memory.photos[0].key, width: 400, height: 400, crop: :fill, class: "object-fit-cover") %>
+          <%= cl_image_tag(memory.medias[0].key, width: 400, height: 400, crop: :fill, class: "object-fit-cover") %>
           <div class="card-memory-infos">
             <h2><%= link_to "#{memory.title}", memory %></h2>
             <p><%= memory.date %></p>

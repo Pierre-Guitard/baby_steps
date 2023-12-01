@@ -10,7 +10,7 @@
   <div class="py-4">
     <% @babies.each do |baby| %>
     <img class="avatar-bordered  avatar-blue" data-baby="<%= baby.id %>" alt="avatar-bordered" src="https://kitt.lewagon.com/placeholder/users/sarahlafer" data-action="click->form#sendBabyId" data-form-target="baby"/>
-      <%# <%= cl_image_tag baby.photos.first.key, class: "avatar-bordered  avatar-blue" %>
+      <%# <%= cl_image_tag baby.medias.first.key, class: "avatar-bordered  avatar-blue" %>
     <% end %>
   </div>
   
