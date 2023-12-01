@@ -270,7 +270,7 @@ puts "Created specific comment 1"
 KeyMemory.create!(
   baby: Baby.find_by(first_name: "mathias"),
   memory: memory1,
-  event: "Crawling"
+  event: "crawling"
 )
 puts "Created specific key memory 1"
 
@@ -327,6 +327,6 @@ puts "Created specific memory 3"
 KeyMemory.create!(
   baby: Baby.find_by(first_name: "gustave"),
   memory: memory3,
-  event: "Crawling"
+  event: "crawling"
 )
 puts "Created specific key memory 3"
