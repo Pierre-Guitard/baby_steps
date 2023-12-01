@@ -267,7 +267,7 @@ memory1 = Memory.new(
   user: romain
 )
 memory1.save!
-ActionText::RichText.create!(record_type: 'Memory', record_id: memory1.id, name: 'content', body: "<p>Aujourd'hui, un moment magique s'est produit dans la vie de Mathias. <strong>À l'âge de 11 mois</strong>, il a entrepris son tout premier voyage en quattre pattes. Les yeux brillants d'excitation, il a déployé toute son énergie pour explorer le monde qui l'entoure.</p>
+ActionText::RichText.create!(record_type: 'Memory', record_id: memory1.id, name: 'content', body: "<p>Aujourd'hui, un moment magique s'est produit dans la vie de Mathias. <strong>À l'âge de 11 mois</strong>, il a entrepris son tout premier voyage en quatre pattes. Les yeux brillants d'excitation, il a déployé toute son énergie pour explorer le monde qui l'entoure.</p>
   <p>Les premiers pas hésitants se sont transformés en mouvements plus assurés, et notre petit explorateur a commencé à parcourir la pièce avec une curiosité infinie. C'était un spectacle incroyable de voir sa petite silhouette se déplacer avec tant de détermination.</p>")
 puts "Created specific memory 1"
 
