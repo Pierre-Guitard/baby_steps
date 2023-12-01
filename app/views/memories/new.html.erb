@@ -1,14 +1,34 @@
 <h1>Create a new memory</h1>
 
+<div class="form" data-controller="form">
+  <%= simple_form_for @memory do |f| %>
+    <%= f.input :title %>
 
-<%= simple_form_for @memory do |f| %>
-  <%= f.input :title %>
+    <%= f.input :location %>
 
-  <%= f.input :location %>
+    <%= f.input :date %>
 
-  <%= f.input :date %>
+    <%= f.rich_text_area :content %>
 
-  <%= f.rich_text_area :content %>
+    <%= f.input :photos, as: :file %>
 
-  <%= f.submit %>
-<% end %>
+    <%= f.input :clips, as: :file %>
+
+    <div class="d-none  " data-form-target="eventfield">
+      <%= f.simple_fields_for :key_memories, KeyMemory.new do |key_memory_subform| %>
+        <%= key_memory_subform.input :event %>
+        <%= key_memory_subform.input :baby_id, as: :hidden, input_html: { data: { form_target: "input" }} %>
+      <% end %>
+    </div>
+
+    <%= f.submit %>
+  <% end %>
+
+
+  <div class="py-4">
+    <% @babies.each do |baby| %>
+    <img class="avatar-bordered  avatar-blue" data-baby="<%= baby.id %>" alt="avatar-bordered" src="https://kitt.lewagon.com/placeholder/users/sarahlafer" data-action="click->form#sendBabyId" data-form-target="baby"/>
+      <%# <%= cl_image_tag baby.photos.first.key, class: "avatar-bordered  avatar-blue" %>
+    <% end %>
+  </div>
+</div>
