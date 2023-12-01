@@ -6,8 +6,6 @@ class MemoriesController < ApplicationController
     @parent = current_user
     @babies = Baby.joins(:parents).where(parents: { user: @parent })
     @memory.key_memories.build
-    # @babies = @parent.baby_id
-    # raise
   end
 
   def create
@@ -47,6 +45,6 @@ class MemoriesController < ApplicationController
   end
 
   def post_memory
-    params.require(:memory).permit(:title, :location, :date, :content, :photos, :clips, key_memories_attributes: [:id, :event, :baby_id])
+    params.require(:memory).permit(:title, :location, :date, :content, key_memories_attributes: [:id, :event, :baby_id], medias: [])
   end
 end

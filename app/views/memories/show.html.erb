@@ -26,27 +26,27 @@
   <p><%= @memory.user.nickname.capitalize() %></p>
   </div>
   <div class="memory-photos d-flex w-100">
-    <% @memory.photos.each_with_index do |photo, index| %>
-      <% if index == 0 %>
-      <div class="image-container w-50">
-        <%= cl_image_tag photo.key, width: 400, height: 400, crop: :fill, gravity: :faces, class: "object-fit-cover" %>
-      </div>
+    <% @memory.medias.each_with_index do |media, index| %>
+      <% if index == 0%>
+        <% if media.content_type.end_with?("mp4") %>
+          <div class="image-container w-50">
+              <video width="145" height="145" controls src="<%= cl_video_path(media.key) %>"></video>
+          </div>
+        <% else %>
+          <div class="image-container w-50">
+            <%= cl_image_tag media.key, width: 400, height: 400, crop: :fill, gravity: :faces, class: "object-fit-cover" %>
+          </div>
+        <% end %>
       <% else %>
-      <div class="image-container w-25">
-        <%= cl_image_tag photo.key, width: 200, height: 200, crop: :fill, gravity: :faces, class: "object-fit-cover" %>
-      </div>
-      <% end %>
-    <% end %>
-
-    <% @memory.clips.each_with_index do |clip, index| %>
-      <% if index == 0 %>
-        <div class="image-container w-50">
-          <video width="145" height="145" controls src="<%= cl_video_path(clip.key) %>"></video>
-        </div>
-      <% else %>
-        <div class="image-container w-25">
-          <video width="50" height="50" controls src="<%= cl_video_path(clip.key) %>"></video>
-        </div>
+         <% if media.content_type.end_with?("mp4") %>
+          <div class="image-container w-50">
+              <video width="75" height="75" controls src="<%= cl_video_path(media.key) %>"></video>
+          </div>
+        <% else %>
+          <div class="image-container w-50">
+            <%= cl_image_tag media.key, width: 200, height: 200, crop: :fill, gravity: :faces, class: "object-fit-cover" %>
+          </div>
+        <% end %>
       <% end %>
     <% end %>
 
@@ -57,26 +57,26 @@
     </div>
   </div>
   <% if @comments.length != 0 %>
-  <div class="memory-comments">
-    <h2>Comments</h2>
-    <% @comments.each do |comment| %>
-      <div class="comment">
-        <p><%= comment.content %></p>
-        <p class="text-end nickname-font"><%= comment.user.nickname.capitalize() %></p>
-      </div>
-    <% end %>
-  </div>
+    <div class="memory-comments">
+      <h2>Comments</h2>
+      <% @comments.each do |comment| %>
+        <div class="comment">
+          <p><%= comment.content %></p>
+          <p class="text-end nickname-font"><%= comment.user.nickname.capitalize() %></p>
+        </div>
+      <% end %>
+    </div>
   <% end %>
   <% if @linked_memories[0].length != 0 %>
-  <div class="linked-events">
-  <h2>Related Memories</h2>
-  <% @linked_memories.each do |memory_array| %>
-    <% memory_array.each do |memory| %>
-      <div class="linked-memory">
-       <%= link_to "#{memory.key_memories[0].baby.nickname.capitalize()} - First time #{memory.key_memories[0].event}", memory_path(memory) %>
-      </div>
+    <div class="linked-events">
+    <h2>Related Memories</h2>
+    <% @linked_memories.each do |memory_array| %>
+      <% memory_array.each do |memory| %>
+        <div class="linked-memory">
+        <%= link_to "#{memory.key_memories[0].baby.nickname.capitalize()} - First time #{memory.key_memories[0].event}", memory_path(memory) %>
+        </div>
+      <% end %>
     <% end %>
-  <% end %>
   <% end %>
   </div>
 </div>
