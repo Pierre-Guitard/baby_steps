@@ -1,9 +1,10 @@
 <div class="container-home">
 
-<h1>My family timeline</h1>
-
 <div class="d-flex justify-content-between align-items-center">
-  <img class="avatar-bordered avatar-green" alt="avatar-bordered" src="https://avatars.githubusercontent.com/u/9579324?v=4https://avatars.githubusercontent.com/u/9579324?v=4" />
+<h1>My family timeline</h1>
+<% @babies.each do |baby| %>
+  <%= cl_image_tag baby.avatar.key, height: 50, class: "avatar-bordered avatar-green" %>
+<% end %>
   <%= render "shared/search_bar" %>
 </div>
 
