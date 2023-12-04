@@ -5,9 +5,10 @@ export default class extends Controller {
   static targets = ["eventfield", "baby", "input"]
   connect() {
   }
-  sendBabyId() {
+  sendBabyId(event) {
     this.eventfieldTarget.classList.toggle("d-none")
-    this.inputTarget.value = this.babyTarget.dataset.baby
-
+    console.log("BabyTarget", event.target.dataset.baby);
+    this.inputTarget.value = event.target.dataset.baby
+    console.log("inputTargetValue", this.inputTarget.value);
   }
 }

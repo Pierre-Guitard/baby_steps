@@ -11,7 +11,7 @@
         <div class="py-4 d-flex">
           <% @babies.each do |baby| %>
           <div>
-            <%= cl_image_tag baby.avatar.key, class: "avatar-bordered  avatar-blue", data: {baby: baby.id, action: "click->form#sendBabyId", form_target:"baby"} %>
+            <%= cl_image_tag baby.avatar.key, class: "avatar-bordered  avatar-blue", data: {baby: baby.id, action: "click->form#sendBabyId"} %>
           </div>
           <% end %>
         </div>
@@ -22,7 +22,7 @@
             <%= key_memory_subform.input :baby_id, as: :hidden, input_html: { data: { form_target: "input" }} %>
           <% end %>
         </div>
-        
+
         <div class="row">
           <%= f.input :title, label: "✍️ Title", placeholder: "Enter a title" %>
         </div>

@@ -1,24 +1,30 @@
 <div class="container">
-  <div class="d-flex justify-content-between">
-    <div class="memory-title">
-      <h1><%= @memory.title %></h1>
-    </div>
+  <div class="d-flex justify-content-between align-center py-4">
+        <div class="memeory-event">
+        <%# <p><i class="fa-solid fa-star"></i><%= @memory.key_memories[0].event </p> %>
+        <p><%= @memory.key_memories[0].event %></p>
+      </div>
     <div class="babies-avatar p-1">
       <% @babies.each do |baby| %>
         <%= cl_image_tag baby.avatar.key, height: 50, class: "avatar-bordered", style: "border-color: #{baby.color}" %>
+        <p><%= @age %> years old</p>
       <% end %>
     </div>
   </div>
-      <div class="memory-date">
+      <div class="memory-date d-flex justify-content-between">
+      <p><i class="fa-solid fa-location-dot px-2"></i><%= @memory.location %></p>
       <p><%= @memory.date %></p>
     </div>
   <div class="memory-content">
+    <div class="memory-title">
+      <h1><%= @memory.title %></h1>
+    </div>
     <p><%= @memory.content %></p>
   </div>
   <div class="author-signature text-end nickname-font p-3">
   <p><%= @memory.user.nickname.capitalize() %></p>
   </div>
-  <div class="memory-medias d-flex w-100">
+  <div class="memory-medias d-flex w-100 pb-4">
     <% @memory.medias.each_with_index do |media, index| %>
       <% if index == 0%>
         <% if media.content_type.end_with?("mp4") %>
@@ -49,13 +55,18 @@
       data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
     </div>
   </div>
+
   <% if @comments.length != 0 %>
-    <div class="memory-comments">
+    <div class="wrapper">
+      <div class="divider div-transparent"></div>
+    </div>
+
+    <div class="memory-comments mb-3">
       <h2>Comments</h2>
       <% @comments.each do |comment| %>
         <div class="comment">
           <p><%= comment.content %></p>
-          <p class="text-end nickname-font p-3"><%= comment.user.nickname.capitalize() %></p>
+          <p class="text-end nickname-font p-2"><%= comment.user.nickname.capitalize() %></p>
         </div>
       <% end %>
     </div>
