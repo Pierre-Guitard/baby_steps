@@ -13,7 +13,11 @@
     <div class="d-flex align-items-center">
       <i class="fa-solid fa-bell icon-bell" style="color : <%= current_user.color %>;"></i>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <%= cl_image_tag current_user.avatar.key, height: 50, gravity:"faces", crop:"fill", class: "avatar-bordered", style: "border-color : #{current_user.color}" %>
+      <% if user_signed_in? %>
+        <%= cl_image_tag current_user.avatar.key, height: 50, gravity:"faces", crop:"fill", class: "avatar-bordered", style: "border-color : #{current_user.color}" %>
+      <% else %>
+        <img class="avatar-bordered avatar-yellow" alt="avatar-bordered" src="https://avatars.githubusercontent.com/u/9579324?v=4https://avatars.githubusercontent.com/u/9579324?v=4" />
+      <% end %>
     </button>
     </div>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
