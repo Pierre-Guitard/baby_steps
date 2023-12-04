@@ -1,25 +1,8 @@
 <div class="container-home">
 
-  <div class="d-flex justify-content-between align-items-center">
-    <div class="baby-avatar-container">
-      <% @babies.each do |baby| %>
-        <%= cl_image_tag baby.avatar.key, height: 50, class: "avatar-bordered", style: "border-color : #{baby.color}" %>
-      <% end %>
-    </div>
-    <%= render "shared/search_bar" %>
-  </div>
-
-  <div class="card-memory-timeline">
+  <div class="d-flex flex-column align-items-stretch gap-4 mt-3 pb-4 mb-5">
     <% @memories.each do |memory| %>
-      <div class="card-memory">
-        <%= link_to memory_path(memory) do %>
-          <%= cl_image_tag(memory.medias[0].key) %>
-        <% end %>
-          <div class="card-memory-infos">
-            <h2><%= memory.title %></h2>
-            <p><%= memory.date %></p>
-          </div>
-      </div>
+      <%= render "shared/memory_card", memory: memory, key_memories: memory.key_memories %>
     <% end %>
   </div>
 </div>
