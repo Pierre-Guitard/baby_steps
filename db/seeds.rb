@@ -139,7 +139,7 @@ index = 0
 
 15.times do
   memory = Memory.new(
-    date: "#{rand(2020..2022)}-#{rand(1..12)}-#{rand(1..28)}",
+    date: "#{rand(2020..2023)}-#{rand(1..12)}-#{rand(1..28)}",
     title: titres[index],
     location: locations.sample,
     user: User.all.sample
