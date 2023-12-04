@@ -22,6 +22,8 @@ class MemoriesController < ApplicationController
     @comments = @memory.comments
     @babies = @memory.babies
     @linked_memories = []
+    birth_date = Date.parse(@babies[0].birth_date)
+    @age = (@memory.date - birth_date).to_i / 365
     @memory.key_memories.where.not(event: "").each do |key_memory|
       baby = key_memory.baby
       key_memories = KeyMemory.where.not(baby: baby).where(event: key_memory.event)
@@ -29,7 +31,6 @@ class MemoriesController < ApplicationController
       @linked_memories << linked_memories
     end
     @linked_memories.uniq!
-
     if @memory.geocode
       @markers = [
         lat: @memory.geocode[0],
