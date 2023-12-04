@@ -7,6 +7,12 @@
 
       <div class="form" data-controller="form">
 
+        <ul id="progressbar">
+          <li class="active">Memory info</li>
+          <li>Text</li>
+          <li>Media</li>
+        </ul>
+
         <%= simple_form_for @memory do |f| %>
         <div class="py-4 d-flex">
           <% @babies.each do |baby| %>
