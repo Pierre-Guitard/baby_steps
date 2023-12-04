@@ -1,7 +1,7 @@
 // Specific CSS for your home-page
 
 .container-home {
-  padding: 12px;
+  padding: 10px;
   background-color: $light-gray;
 }
 
@@ -11,36 +11,41 @@
 }
 
 .card-memory-timeline {
-  display: flex;
-  flex-wrap: wrap;
-  // flex-direction: column;
-  align-items: center;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 1rem;
   padding: 0px;
+  text-decoration: none;
+  margin: 1rem 0;
 }
 
+
 .card-memory {
-  margin-bottom: 5px;
   /* Espacement entre chaque carte */
   background: white;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-  width: 30%;
   /* Ajuster la largeur à 100% pour occuper toute la largeur de la timeline */
   border-radius: 6px;
-  padding: 2px;
   background-color: $light-gray;
-  margin: 4px;
+  margin: 4px 0;
+  padding: 6px;
 }
 
 .card-memory-infos {
   padding: 4px;
   align-items: center;
+  text-decoration: none;
+}
+
+.card-memory-infos h2 {
+  text-decoration: none;
 }
 
 .card-memory-timeline img {
   width: 100%;
   object-fit: cover;
   border-radius: 10px;
-  padding: 4px;
+  height: 260px;
 }
 
 .card-memory-timeline h2 {

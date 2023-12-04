@@ -11,7 +11,7 @@
         <div class="py-4 d-flex">
           <% @babies.each do |baby| %>
           <div>
-            <%= cl_image_tag baby.avatar.key, class: "avatar-bordered  avatar-blue", data: {baby: baby.id, action: "click->form#sendBabyId"} %>
+            <%= cl_image_tag baby.avatar.key, class: "avatar-bordered", style: "border-color : #{baby.color}", data: {baby: baby.id, action: "click->form#sendBabyId"} %>
           </div>
           <% end %>
         </div>
