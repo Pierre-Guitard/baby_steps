@@ -20,6 +20,13 @@
 }
 
 .icon-bell {
-  color: $green;
+  // color: $green;
+  font-size: 1.5rem;
   // width: 100%;
+}
+
+.babysteps-name {
+  font-family: $title-font;
+  margin-bottom: 0px;
+  font-size: 1.5rem;
 }
