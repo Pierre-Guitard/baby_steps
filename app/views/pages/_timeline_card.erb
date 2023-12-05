@@ -1,9 +1,7 @@
-<div class="timeline-card card" style="width: 18rem;">
+<div class="timeline-card card" style="margin-top:<%= timeline_event[:margin] %>px">
   <div class="card-body" style="border-color:<%= timeline_event[:baby].color %>">
     <h5 class="card-title">First time <%= timeline_event[:event] %></h5>
     <h6 class="card-subtitle mb-2 text-muted"><%= timeline_event[:days] %> days</h6>
     <p class="card-text"><%= timeline_event[:baby].nickname.capitalize() %></p>
   </div>
 </div>
-
-<%=  %>
