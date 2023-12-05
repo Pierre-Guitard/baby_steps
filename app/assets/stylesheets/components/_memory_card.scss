@@ -5,11 +5,11 @@
   display: flex;
   overflow: hidden;
   height: 150px;
+  text-decoration: none;
 }
 
 .card-memory-infos {
   align-items: center;
-  text-decoration: none;
   padding: 10px;
 }
 
@@ -24,4 +24,10 @@
 
 .card-memory p {
   margin-bottom: 0px;
+  text-decoration: none;
+
+}
+
+.card-memory a {
+  text-decoration: none;
 }
