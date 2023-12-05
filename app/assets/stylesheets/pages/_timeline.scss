@@ -1,17 +1,31 @@
 .timeline {
-  display: flex;
-  margin-bottom: 5em;
-}
-
-.timeline-bar {
-  width: 20px;
-  background-color: black;
+  background-image: image-url("timeline_background.png");
+  background-repeat: repeat-y;
+  background-position: center;
 }
 
 .timeline-cards {
-  margin-bottom: 5em;
 }
 
 .timeline-card {
-  border: 1px solid;
+  display: flex;
+}
+
+.timeline-card-event {
+  font-weight: bold;
+  font-family: $title-font;
+}
+
+.timeline-card-infos {
+  padding: 3px;
+  width: 100px;
+}
+
+.infos-right {
+  text-align: right;
+}
+
+.card-right {
+  // float: right;
+  justify-content: end;
 }
