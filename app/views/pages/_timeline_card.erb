@@ -1,8 +1,7 @@
 <% if timeline_event[:baby].first_name == "mathias" %>
   <div class="timeline-card card-left" style="margin-top:<%= timeline_event[:margin] %>px">
       <div class="timeline-card-infos infos-right">
-        <h5 class="timeline-card-event" style="color:<%= timeline_event[:baby].color %>">First time <%= timeline_event[:event] %></h5>
-        <p class="timeline-card-days"> at <%= timeline_event[:days] %> days</p>
+        <h5 class="timeline-card-event" style="color:<%= timeline_event[:baby].color %>">1st <%= timeline_event[:event] %></h5>
       </div>
     <div class="timeline-card-img">
       <%= link_to timeline_event[:memory] do %>
@@ -18,8 +17,7 @@
       <% end %>
     </div>
       <div class="timeline-card-infos">
-        <h5 class="timeline-card-event" style="color: <%= timeline_event[:baby].color %>">First time <%= timeline_event[:event] %></h5>
-        <p class="timeline-card-days"> at <%= timeline_event[:days] %> days</p>
+        <h5 class="timeline-card-event" style="color: <%= timeline_event[:baby].color %>">1st <%= timeline_event[:event] %></h5>
       </div>
   </div>
 <% end %>

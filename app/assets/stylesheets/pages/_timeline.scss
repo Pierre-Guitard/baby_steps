@@ -1,10 +1,38 @@
 .timeline {
+  position: relative;
+}
+
+.timeline-background {
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  left: 0;
+  width:100%;
   background-image: image-url("timeline_background.png");
   background-repeat: repeat-y;
   background-position: center;
+  // background-size: 100% 90px, auto;
+}
+
+.timeline-grid {
+  position: absolute;
+  z-index: 3;
+  top: 0;
+  left: 0;
+  width:100%;
+}
+
+.timeline-grid-line {
+  height: 90px;
+  border-bottom: solid 1px #e6e6e6;
 }
 
 .timeline-cards {
+  position: absolute;
+  z-index: 4;
+  top: 0;
+  left: 0;
+  width:100%;
 }
 
 .timeline-card {
