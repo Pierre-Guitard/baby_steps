@@ -22,7 +22,7 @@ class MemoriesController < ApplicationController
     @comments = @memory.comments
     @babies = @memory.babies
     @linked_memories = []
-    birth_date = Date.parse(@babies[0].birth_date)
+    birth_date = @babies[0].birth_date
     @age = (@memory.date - birth_date).to_i / 365
     @memory.key_memories.where.not(event: "").each do |key_memory|
       baby = key_memory.baby
