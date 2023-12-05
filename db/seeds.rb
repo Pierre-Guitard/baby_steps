@@ -166,10 +166,11 @@ end
 puts "creating key_memories"
 
 seed_events = [
-  "roll over",
-  "",
-  "standing",
-  "walking",
+  "🤸Roll over",
+  "🪑Sitting",
+  "🐈 Crawling",
+  "🧍Standing",
+  "🚶Walking",
   ""
 ]
 
@@ -281,7 +282,7 @@ puts "Created specific comment 1"
 KeyMemory.create!(
   baby: Baby.find_by(first_name: "mathias"),
   memory: memory1,
-  event: "crawling"
+  event: "🐈 Crawling"
 )
 puts "Created specific key memory 1"
 
