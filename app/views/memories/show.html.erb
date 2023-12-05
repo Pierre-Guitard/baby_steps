@@ -26,7 +26,7 @@
       <% end %>
     </div>
   <div class="memory-medias d-flex w-100 pb-4" data-controller="medias">
-    <% @memory.medias.each_with_index do |media, index| %>
+    <% @memory.medias.reverse.each_with_index do |media, index| %>
         <% if media.content_type.end_with?("mp4") %>
           <div class="image-container w-50" data-medias-target="video">
               <video width="175" height="175" src="<%= cl_video_path(media.key) %>"  data-bs-toggle='modal' data-bs-target="#modal-<%= media.key %>"></video>

@@ -23,7 +23,7 @@ class MemoriesController < ApplicationController
   def age_with_month
     @parent = current_user
     @memory.babies
-    # birth_date = Date.parse(@babies[0].birth_date)
+    birth_date = @babies[0].birth_date
     time_diff = Time.diff(@memory.date, birth_date)
     if time_diff[:year] < 1
       @age_month = "#{time_diff[:month]} month"

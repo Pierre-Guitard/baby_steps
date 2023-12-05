@@ -1,6 +1,6 @@
 <%= link_to memory do %>
 <div class="card-memory">
-    <%= cl_image_tag memory.medias[0].key, width: 300, class: "card-memory-img", crop: :fill, gravity: :faces %>
+    <%= cl_image_tag memory.medias.reverse[0].key, width: 300, class: "card-memory-img", crop: :fill, gravity: :faces %>
     <div class="card-memory-infos">
       <div class="card-infos-top">
         <h2 class="card-title"><%= memory.title %></h2>
