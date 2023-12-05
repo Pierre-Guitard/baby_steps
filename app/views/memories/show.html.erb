@@ -1,52 +1,55 @@
 <div class="container">
-  <div class="d-flex justify-content-between align-center py-4">
-        <div class="memeory-event">
-        <%# <p><i class="fa-solid fa-star"></i><%= @memory.key_memories[0].event </p> %>
-        <p><%= @memory.key_memories[0].event %></p>
-      </div>
-    <div class="babies-avatar p-1">
-      <% @babies.each do |baby| %>
-        <%= cl_image_tag baby.avatar.key, height: 50, class: "avatar-bordered", style: "border-color: #{baby.color}" %>
-        <p><%= @age %> years old</p>
-      <% end %>
-    </div>
-  </div>
-      <div class="memory-date d-flex justify-content-between">
-      <p><i class="fa-solid fa-location-dot px-2"></i><%= @memory.location %></p>
-      <p><%= @memory.date %></p>
-    </div>
-  <div class="memory-content">
-    <div class="memory-title">
+<%# <div class="memory-title">
+
+    </div> %>
+  <div class="pt-4">
+    <div class="memory-date">
       <h1><%= @memory.title %></h1>
+      <p>🥇 <%= @memory.key_memories[0].event %></p>
+        <div class="d-flex justify-content-between">
+          <p><i class="fa-solid fa-location-dot px-2"></i><%= @memory.location %></p>
+          <p><%= @memory.date %></p>
+        </div>
     </div>
-    <p><%= @memory.content %></p>
   </div>
-  <div class="author-signature text-end nickname-font p-3">
+  <div class="memory-content">
+    <p><%= @memory.content %></p>
+      <div class="author-signature text-end nickname-font p-3">
   <p><%= @memory.user.nickname.capitalize() %></p>
   </div>
-  <div class="memory-medias d-flex w-100 pb-4">
-    <% @memory.medias.each_with_index do |media, index| %>
-      <% if index == 0%>
-        <% if media.content_type.end_with?("mp4") %>
-          <div class="image-container w-50">
-              <video width="145" height="145" controls src="<%= cl_video_path(media.key) %>"></video>
-          </div>
-        <% else %>
-          <div class="image-container w-50">
-            <%= cl_image_tag media.key, width: 400, height: 400, crop: :fill, gravity: :faces, class: "object-fit-cover" %>
-          </div>
-        <% end %>
-      <% else %>
-        <% if media.content_type.end_with?("mp4") %>
-          <div class="image-container w-25">
-              <video width="75" height="75" controls src="<%= cl_video_path(media.key) %>"></video>
-          </div>
-        <% else %>
-          <div class="image-container w-25">
-            <%= cl_image_tag media.key, width: 200, height: 200, crop: :fill, gravity: :faces, class: "object-fit-cover" %>
-          </div>
-        <% end %>
+  </div>
+
+  <div class="babies-avatar p-1">
+      <% @babies.each do |baby| %>
+        <%= cl_image_tag baby.avatar.key, height: 50, class: "avatar-bordered", style: "border-color: #{baby.color}" %>
+        <p class="babies-ages"> <i><%= baby.nickname %> was <%= @age %> old</i></p>
       <% end %>
+    </div>
+  <div class="memory-medias d-flex w-100 pb-4" data-controller="medias">
+    <% @memory.medias.each_with_index do |media, index| %>
+        <% if media.content_type.end_with?("mp4") %>
+          <div class="image-container w-50" data-medias-target="video">
+              <video width="175" height="175" src="<%= cl_video_path(media.key) %>"  data-bs-toggle='modal' data-bs-target="#modal-<%= media.key %>"></video>
+          </div>
+        <% else %>
+          <div class="image-container w-50" >
+            <%= cl_image_tag media.key, width: 500, height: 500, crop: :fill, gravity: :faces, class: "object-fit-cover", data: { medias_target: "picture", bs_toggle: "modal", bs_target:"#modal-#{media.key}" } %>
+          </div>
+        <% end %>
+        <!-- Modal -->
+        <div class="modal fade" id="modal-<%= media.key %>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-body">
+                 <% if media.content_type.end_with?("mp4") %>
+                    <video width="372" height="364" class="baby-media" controls src="<%= cl_video_path(media.key) %>" data-medias-target="video"></video>
+                  <% else %>
+                    <%= cl_image_tag media.key, width: 500, height: 500, crop: :fill, gravity: :faces, class: "baby-media object-fit-cover", data: { medias_target: "picture" } %>
+                  <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
     <% end %>
 
   <div class="memory-location image-container w-25" style="width: 100%; height: 89px;"

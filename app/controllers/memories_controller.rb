@@ -1,3 +1,5 @@
+require 'time_diff'
+
 class MemoriesController < ApplicationController
   before_action :set_memory, only: [:show]
 
@@ -18,12 +20,25 @@ class MemoriesController < ApplicationController
     end
   end
 
+  def age_with_month
+    @parent = current_user
+    @memory.babies
+    birth_date = Date.parse(@babies[0].birth_date)
+    time_diff = Time.diff(@memory.date, birth_date)
+    if time_diff[:year] < 1
+      @age_month = "#{time_diff[:month]} month"
+    elsif time_diff[:year] >= 1 && time_diff[:month]  != 0
+      "#{time_diff[:year]} years #{time_diff[:month]} month"
+    elsif time_diff[:month] == 0
+      @age_month = "#{time_diff[:year]} years"
+    end
+  end
+
   def show
     @comments = @memory.comments
     @babies = @memory.babies
     @linked_memories = []
-    birth_date = Date.parse(@babies[0].birth_date)
-    @age = (@memory.date - birth_date).to_i / 365
+    @age = self.age_with_month
     @memory.key_memories.where.not(event: "").each do |key_memory|
       baby = key_memory.baby
       key_memories = KeyMemory.where.not(baby: baby).where(event: key_memory.event)

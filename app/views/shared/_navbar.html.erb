@@ -11,9 +11,9 @@
     </div>
 
     <div class="d-flex align-items-center">
-      <i class="fa-solid fa-bell icon-bell" style="color : <%= current_user.color %>;"></i>
+      <%# <i class="fa-solid fa-bell icon-bell" style="color : <%= current_user.color %>;"></i> %>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <%= cl_image_tag current_user.avatar.key, height: 50, gravity:"faces", crop:"fill", class: "avatar-bordered", style: "border-color : #{current_user.color}" %>
+      <%# <%= cl_image_tag current_user.avatar.key, height: 50, gravity:"faces", crop:"fill", class: "avatar-bordered", style: "border-color : #{current_user.color}" %>
     </button>
     </div>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
