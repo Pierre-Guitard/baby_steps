@@ -1,3 +1,37 @@
-.btn-submit {
-  text-align: right;
+.form {
+  
+}
+.step {
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: $orange;
+  border: none;
+  border-radius: 50%;
+  display: inline-block;
+  opacity: 0.5;
+}
+
+.step-fill {
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: $orange;
+  border: none;
+  border-radius: 50%;
+  display: inline-block;
+  opacity: 1;
+}
+
+.submit_container {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  bottom: 17vh;
+  width: 100%;
+  padding-inline: 10%;
+  gap: 20px;
+  left: 0;
+  border-radius: 8px;
 }

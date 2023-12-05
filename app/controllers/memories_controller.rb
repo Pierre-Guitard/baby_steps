@@ -4,19 +4,35 @@ class MemoriesController < ApplicationController
   before_action :set_memory, only: [:show]
 
   def new
-    @memory = Memory.new
+    session[:memory_params] ||= {}
+    @memory = Memory.new(session[:memory_params])
+    @step = session[:step] || 1
+    session[:step] = @step
     @parent = current_user
     @babies = Baby.joins(:parents).where(parents: { user: @parent })
     @memory.key_memories.build
   end
 
   def create
-    @memory = Memory.new(post_memory)
+    options = session[:memory_params].deep_merge!(memory_params)
+    @memory = Memory.new(options)
     @memory.user = current_user
-    if @memory.save!
-      redirect_to memory_path(@memory)
+    @step = session[:step]
+
+    if @step == 2
+
+      reset_session
+
+      if @memory.save
+        redirect_to memory_path(@memory)
+      else
+        redirect_to new_memory_path(@memory)
+      end
+
     else
-      render :new, status: :unprocessable_entity
+      new_step = @step + 1
+      session[:step] = new_step
+      redirect_to new_memory_path
     end
   end
 
@@ -62,5 +78,14 @@ class MemoriesController < ApplicationController
 
   def post_memory
     params.require(:memory).permit(:title, :location, :date, :content, key_memories_attributes: [:id, :event, :baby_id], medias: [])
+  end
+
+  def memory_params
+    params.require(:memory).permit(:title, :location, :date, :content, key_memories_attributes: [:id, :event, :baby_id], medias: [])
+  end
+
+  def empty_cookies
+    session[:memory_params] = nil
+    session[:step] = nil
   end
 end
