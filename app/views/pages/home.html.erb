@@ -13,7 +13,7 @@
     <% @memories.each do |memory| %>
       <div class="card-memory">
         <%= link_to memory_path(memory) do %>
-          <%= cl_image_tag(memory.medias[0].key) %>
+          <%# <%= cl_image_tag(memory.medias[0].key) %>
         <% end %>
           <div class="card-memory-infos">
             <h2><%= memory.title %></h2>
