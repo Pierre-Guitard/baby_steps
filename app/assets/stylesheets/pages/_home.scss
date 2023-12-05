@@ -10,36 +10,14 @@
   color: $gray;
 }
 
-.card-memory-timeline {
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-gap: 1rem;
-  padding: 0px;
-  text-decoration: none;
-  margin: 1rem 0;
-}
-
-
-.card-memory {
-  /* Espacement entre chaque carte */
-  background: white;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-  /* Ajuster la largeur à 100% pour occuper toute la largeur de la timeline */
-  border-radius: 6px;
-  background-color: $light-gray;
-  margin: 4px 0;
-  padding: 6px;
-}
-
-.card-memory-infos {
-  padding: 4px;
-  align-items: center;
-  text-decoration: none;
-}
-
-.card-memory-infos h2 {
-  text-decoration: none;
-}
+// .card-memory-timeline {
+//   display: flex;
+//   grid-template-columns: 1fr;
+//   grid-gap: 1rem;
+//   padding: 0px;
+//   text-decoration: none;
+//   margin: 1rem 0;
+// }
 
 .card-memory-timeline img {
   width: 100%;

@@ -1,0 +1,16 @@
+<%= link_to memory do %>
+<div class="card-memory">
+    <%= cl_image_tag memory.medias[0].key, width: 300, class: "card-memory-img", crop: :fill, gravity: :faces %>
+    <div class="card-memory-infos">
+      <div class="card-infos-top">
+        <h2 class="card-title"><%= memory.title %></h2>
+      </div>
+      <div class="card-infos-bottom">
+        <p><small class="text-body-secondary"><%= memory.date.strftime('%d/%m/%Y') %></small></p>
+          <% key_memories.each_with_index do |key_memory, index| %>
+            <p><small class="text-body-secondary"><%= key_memory.baby.nickname.capitalize() %></small></p>
+        <% end %>
+      </div>
+    </div>
+</div>
+<% end %>
