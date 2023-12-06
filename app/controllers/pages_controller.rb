@@ -26,8 +26,12 @@ class PagesController < ApplicationController
 
     @timeline.sort_by! { |event| event[:days] }
     margin = 0
-    @timeline.each do |timeline_event|
-      timeline_event[:margin] = timeline_event[:days] - margin
+    @timeline.each_with_index do |timeline_event, index|
+      if index.zero?
+        timeline_event[:margin] = timeline_event[:days] - margin
+      else
+        timeline_event[:margin] = timeline_event[:days] - margin - 50
+      end
       margin = timeline_event[:margin]
     end
   end

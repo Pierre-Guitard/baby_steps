@@ -1,13 +1,21 @@
-.timeline {
+.timeline_container {
+  height: 1200px;
+}
+
+.timeline_cards_container {
   position: relative;
+  z-index: 4;
+  width:100%;
+  height: 100%;
 }
 
 .timeline-background {
   position: absolute;
   z-index: 2;
-  top: 0;
+  top: 74px;
   left: 0;
   width:100%;
+  height: 100%;
   background-image: image-url("timeline_background.png");
   background-repeat: repeat-y;
   background-position: center;
@@ -17,36 +25,57 @@
 .timeline-grid {
   position: absolute;
   z-index: 3;
-  top: 0;
+  top: 74px;
   left: 0;
   width:100%;
+  height:100%;
 }
 
 .timeline-grid-line {
   height: 90px;
   border-bottom: solid 1px #e6e6e6;
+  display: flex;
+  align-items: flex-end;
+  justify-content: left;
+}
+
+.timeline-grid-line p {
+  margin-bottom: 1px;
+  margin-left: 5px;
+  color: #a2d2ff;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-family: $body-font;
+  font-size: 0.8rem;
 }
 
 .timeline-cards {
-  position: absolute;
-  z-index: 4;
-  top: 0;
-  left: 0;
-  width:100%;
+  // position: absolute;
+  // z-index: 4;
+  // top: 0;
+  // left: 0;
+  // width:100%;
 }
 
 .timeline-card {
   display: flex;
+  height: 66px;
+  position: absolute;
+  z-index: 6;
+  justify-content: flex-start;
+  border-radius: 14px;
+  padding: 6px;
 }
 
 .timeline-card-event {
-  font-weight: bold;
-  font-family: $title-font;
+  font-family: $nick-name;
 }
 
 .timeline-card-infos {
   padding: 3px;
-  width: 100px;
+  padding-inline: 6px;
+  display: flex;
+  align-items: center;
 }
 
 .infos-right {
@@ -56,4 +85,14 @@
 .card-right {
   // float: right;
   justify-content: end;
+}
+
+.timeline_card_container {
+  width: 100%;
+  display: flex;
+}
+
+.card-reverse {
+  flex-direction: row-reverse;
+  justify-content: flex-end;
 }

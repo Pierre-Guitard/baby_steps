@@ -1,23 +1,13 @@
-<% if timeline_event[:baby].first_name == "mathias" %>
-  <div class="timeline-card card-left" style="margin-top:<%= timeline_event[:margin] %>px">
-      <div class="timeline-card-infos infos-right">
-        <h5 class="timeline-card-event" style="color:<%= timeline_event[:baby].color %>">1st <%= timeline_event[:event] %></h5>
+
+  <div class="timeline_card_container <%= timeline_event[:baby].first_name == "mathias" ? "card-left" : "card-right" %>">
+    <div class="timeline-card <%= timeline_event[:baby].first_name == "mathias" ? "" : "card-reverse" %>" style="top:<%= timeline_event[:days] %>px; background-color: <%= timeline_event[:baby].color %>">
+      <div class="timeline-card-infos <%= timeline_event[:baby].first_name == "mathias" ? "infos-right" : "" %>">
+        <h5 class="timeline-card-event" style="color:white;"><%= timeline_event[:event] %></h5>
       </div>
-    <div class="timeline-card-img">
-      <%= link_to timeline_event[:memory] do %>
-      <%= cl_image_tag timeline_event[:baby].avatar.key, height: 50, gravity:"faces", crop:"fill", class: "avatar-bordered", style: "border-color : #{timeline_event[:baby]}.color}" %>
-      <% end %>
+      <div class="timeline-card-img">
+        <%= link_to timeline_event[:memory] do %>
+        <%= cl_image_tag timeline_event[:baby].avatar.key, height: 50, gravity:"faces", crop:"fill", class: "avatar-bordered", style: "border-color : #{timeline_event[:baby]}.color}" %>
+        <% end %>
+      </div>
     </div>
   </div>
-<% else %>
-  <div class="timeline-card card-right" style="margin-top:<%= timeline_event[:margin] %>px">
-    <div class="timeline-card-img">
-      <%= link_to timeline_event[:memory] do %>
-      <%= cl_image_tag timeline_event[:baby].avatar.key, height: 50, gravity:"faces", crop:"fill", class: "avatar-bordered", style: "border-color : #{timeline_event[:baby]}.color}" %>
-      <% end %>
-    </div>
-      <div class="timeline-card-infos">
-        <h5 class="timeline-card-event" style="color: <%= timeline_event[:baby].color %>">1st <%= timeline_event[:event] %></h5>
-      </div>
-  </div>
-<% end %>
