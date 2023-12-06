@@ -1,5 +1,7 @@
 .timeline {
   position: relative;
+  z-index: 4;
+  width:100%;
 }
 
 .timeline-background {
@@ -8,6 +10,7 @@
   top: 0;
   left: 0;
   width:100%;
+  height: 100%;
   background-image: image-url("timeline_background.png");
   background-repeat: repeat-y;
   background-position: center;
@@ -20,23 +23,36 @@
   top: 0;
   left: 0;
   width:100%;
+  height:100%;
 }
 
 .timeline-grid-line {
   height: 90px;
   border-bottom: solid 1px #e6e6e6;
+  display: flex;
+  align-items: flex-end;
+  justify-content: left;
+}
+
+.timeline-grid-line p {
+  margin-bottom: 1px;
+  margin-left: 1px;
+  color: gray;
+  font-family: $body-font;
 }
 
 .timeline-cards {
-  position: absolute;
-  z-index: 4;
-  top: 0;
-  left: 0;
-  width:100%;
+  // position: absolute;
+  // z-index: 4;
+  // top: 0;
+  // left: 0;
+  // width:100%;
 }
 
 .timeline-card {
   display: flex;
+  height: 50px;
+  z-index: 6;
 }
 
 .timeline-card-event {

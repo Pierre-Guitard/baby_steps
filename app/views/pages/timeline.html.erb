@@ -1,16 +1,20 @@
 <div class="container">
   <div class="timeline">
-    <div class="timeline-background">
-    </div>
-    <div class="timeline-grid">
-    <% 12.times do |div| %>
-      <div class="timeline-grid-line"></div>
-    <% end %>
-    </div>
-    <div class="timeline-cards">
     <% @timeline.each do |timeline_event| %>
       <%= render "timeline_card", timeline_event: timeline_event %>
     <% end %>
+  <div class="timeline-background">
+  </div>
+  <div class="timeline-grid">
+  <% months = 3 %>
+  <% 12.times do |div| %>
+    <div class="timeline-grid-line">
+      <p><%= months %> months</p>
+      <% months += 3 %>
     </div>
+  <% end %>
+  </div>
+    <%# <div class="timeline-cards">
+    </div> %>
   </div>
 </div>
