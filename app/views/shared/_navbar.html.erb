@@ -9,18 +9,19 @@
 
 
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
-  <div class="container-fluid d-flex justify-content-between">
 
-    <div class="d-flex align-items-center justify-content-between">
+  <div class="container-fluid d-flex align-items-center justify-content-between">
+
+    <%# <div class="d-flex align-items-center"> %>
       <div class="navbar-brand">
         <%= image_tag "https://notion-emojis.s3-us-west-2.amazonaws.com/prod/svg-twitter/1f423.svg", onclick:"openNav()" %>
       </div>
-      <div class="d-flex align-items-center babysteps-name">
+      <div class="babysteps-name">
           <p style="margin-bottom: 0px">BabySteps</p>
       </div>
-    </div>
+    <%# </div> %>
 
-    <div class="d-flex align-items-center">
+    <div class="d-flex">
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <% if user_signed_in? %>
         <%= cl_image_tag current_user.avatar.key, height: 50, gravity:"faces", crop:"fill", class: "avatar-bordered", style: "border-color : #{current_user.color}" %>
