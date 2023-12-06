@@ -6,6 +6,7 @@ class PagesController < ApplicationController
     @memories = Memory.order(date: :desc)
     @babies = Baby.all
     @key_memories = KeyMemory.all
+    
   end
 
   def timeline

@@ -6,7 +6,6 @@
   z-index: 1; /* Stay on top */
   top: 0; /* Stay at the top */
   left: 0;
-  // background-color: rgb(165, 209, 245);
   background: rgb(165,209,245);
   background: linear-gradient(180deg, rgba(165,209,245,1) 33%, rgba(197,225,250,1) 63%, rgba(222,237,251,1) 93%);
   overflow-x: hidden; /* Disable horizontal scroll */
@@ -53,4 +52,16 @@
 @media screen and (max-height: 450px) {
   .sidenav {padding-top: 15px;}
   .sidenav a {font-size: 18px;}
+}
+
+@keyframes gradient {
+  0% {
+      background-position: 0% 50%;
+  }
+  50% {
+      background-position: 100% 50%;
+  }
+  100% {
+      background-position: 0% 50%;
+  }
 }

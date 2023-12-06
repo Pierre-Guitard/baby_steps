@@ -3,7 +3,9 @@
   <div class="pt-4">
     <div class="memory-date">
       <h1><%= @memory.title %></h1>
-      <p>🥇 <%= @memory.key_memories[0].event %></p>
+      <% if @memory.key_memories[0].event != "" %>
+        <%= render "shared/event" %>
+      <% end %>
       <div class="d-flex justify-content-between">
         <p><i class="fa-solid fa-location-dot px-2"></i><%= @memory.location %></p>
         <p><%= @memory.date %></p>
