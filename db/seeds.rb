@@ -286,10 +286,10 @@ KeyMemory.create!(
 )
 puts "Created specific key memory 1"
 
-photo1 = File.open(Rails.root.join("app/assets/images/seed/IMG_3143.jpeg"))
-memory1.medias.attach(io: photo1, filename: "photo_#{rand(1..9999999)}.jpg", content_type: "image/jpg")
 video1 = File.open(Rails.root.join("app/assets/images/seed/2021-10-20 - IMG_2472.mp4"))
 memory1.medias.attach(io: video1, filename: "video_#{rand(1..9999999)}.mp4", content_type: "video/mp4")
+photo1 = File.open(Rails.root.join("app/assets/images/seed/IMG_3143.jpeg"))
+memory1.medias.attach(io: photo1, filename: "photo_#{rand(1..9999999)}.jpg", content_type: "image/jpg")
 puts "added video"
 
 memory2 = Memory.new(
