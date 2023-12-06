@@ -7,12 +7,12 @@
   top: 0; /* Stay at the top */
   left: 0;
   background: rgb(165,209,245);
-  background: linear-gradient(180deg, rgba(165,209,245,1) 33%, rgba(197,225,250,1) 63%, rgba(222,237,251,1) 93%);
+  background: linear-gradient(180deg, rgba(189,231,223,1) 33%, rgba(194,231,225,1) 68%, rgba(209,235,230,1) 88%);
   overflow-x: hidden; /* Disable horizontal scroll */
   padding-top: 60px; /* Place content 60px from the top */
   transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
   color: white;
-  z-index: 10;
+  z-index: 15;
 }
 .navContent {
   padding: 193px 75px;
