@@ -1,5 +1,4 @@
 <div class="container-home">
-  <%# <h1>Create a new memory</h1> %>
 
   <div class="container col-12">
 
@@ -7,16 +6,11 @@
 
       <div class="form" data-controller="form">
 
-        <%# <ul id="progressbar">
-          <li class="active">Memory info</li>
-          <li>Text</li>
-        </ul> %>
-
         <%= simple_form_for @memory do |f| %>
 
           <% if @step == 1 %>
 
-            <%# <h2>Memory infos</h2> %>
+            <h2 class="py-3 steps-form">Add Memory Info</h2>
 
             <div>
 
@@ -45,7 +39,7 @@
                 <div class="col-5">
                   <%= f.input :location, label: "📍Location", placeholder: "City" %>
                 </div>
-                <div class="col-5">
+                <div class="col-6">
                   <%= f.input :date,label: "📅 Date", as: :date, html5: true, input_html: {value: (Date.today)} %>
                 </div>
               </div>
@@ -57,14 +51,14 @@
 
           <% if @step == 2 %>
 
-            <%# <h2>Text</h2> %>
+            <h2 class="py-3 steps-form">Customizing the Memory</h2>
 
-            <div class="py-3">
+            <div class="py-2">
               <p>✍️ Description</p>
-              <%= f.rich_text_area :content, label: "✍️ Description", placeholder: "Write a description", style: "height:20vh" %>
+              <%= f.rich_text_area :content, label: "✍️ Description", placeholder: "Write a description", style: "height:30vh" %>
             </div>
 
-              <div class="py-3 row">
+              <div class="py-2 row">
                 <%= f.input :medias, as: :file,  input_html: { multiple: true }, label: "📸 🎥 Media" %>
               </div>
           <% end %>
