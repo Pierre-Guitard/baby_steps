@@ -15,11 +15,13 @@
 
 .card-memory-infos h2 {
   text-decoration: none;
+  color: $red;
 }
 
 .card-memory-img {
   width: 150px;
   object-fit: cover;
+  text-decoration: none;
 }
 
 .card-memory p {
@@ -28,6 +30,7 @@
 
 }
 
-.card-memory a {
+.card-memory-link {
   text-decoration: none;
+  color: black;
 }
