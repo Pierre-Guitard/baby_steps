@@ -20,8 +20,7 @@ class MemoriesController < ApplicationController
     @step = session[:step]
 
     if @step == 2
-
-      reset_session
+      empty_cookies
 
       if @memory.save
         redirect_to memory_path(@memory)
