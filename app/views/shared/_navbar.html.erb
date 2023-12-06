@@ -1,10 +1,20 @@
+<div id="mySidenav" class="sidenav">
+  <div class="navContent">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <%= link_to "Memories", root_path%>
+    <a href="#">Profile</a>
+    <%= link_to "Timeline", timeline_path%>
+  </div>
+</div>
+
+
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
   <div class="container-fluid d-flex justify-content-between">
 
     <div class="d-flex align-items-center justify-content-between">
-        <%= link_to root_path, class: "navbar-brand" do %>
-          <%= image_tag "https://notion-emojis.s3-us-west-2.amazonaws.com/prod/svg-twitter/1f423.svg" %>
-        <% end %>
+      <div class="navbar-brand">
+        <%= image_tag "https://notion-emojis.s3-us-west-2.amazonaws.com/prod/svg-twitter/1f423.svg", onclick:"openNav()" %>
+      </div>
       <div class="d-flex align-items-center babysteps-name">
           <p style="margin-bottom: 0px">BabySteps</p>
       </div>
@@ -13,7 +23,7 @@
     <div class="d-flex align-items-center">
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <% if user_signed_in? %>
-        <%= cl_image_tag current_user.avatar.key, height: 50, gravity:"faces", crop:"fill", class: "avatar-bordered", style: "border-color : #{current_user.color}" %> 
+        <%= cl_image_tag current_user.avatar.key, height: 50, gravity:"faces", crop:"fill", class: "avatar-bordered", style: "border-color : #{current_user.color}" %>
       <% else %>
         <img class="avatar-bordered avatar-yellow" alt="avatar-bordered" src="https://avatars.githubusercontent.com/u/9579324?v=4https://avatars.githubusercontent.com/u/9579324?v=4" />
       <% end %>
@@ -40,3 +50,15 @@
       </div>
   </div>
 </div>
+
+
+<script>
+  function openNav() {
+    document.getElementById("mySidenav").style.width = "100%";
+  }
+
+  /* Close/hide the sidenav */
+  function closeNav() {
+    document.getElementById("mySidenav").style.width = "0";
+  }
+</script>
