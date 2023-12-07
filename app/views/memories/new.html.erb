@@ -37,7 +37,7 @@
 
                 <div class="d-none col-6" data-form-target="eventfield">
                   <%= f.simple_fields_for :key_memories, KeyMemory.new do |key_memory_subform| %>
-                    <%= key_memory_subform.input :event, label: "🥇 Event", placeholder: "Choose a key event", collection:   EVENTS = ["🤸Roll over", "🪑Sitting", "🐈 Crawling", "🧍Standing", "🚶Walking"] %>
+                    <%= key_memory_subform.input :event, label: "🥇 Event", placeholder: "Choose a key event", collection: ["🤸Roll over", "🪑Sitting", "🐈 Crawling", "🧍Standing", "🚶Walking"] %>
                     <%= key_memory_subform.input :baby_id, as: :hidden, input_html: { data: { form_target: "input" }} %>
                   <% end %>
                 </div>
