@@ -129,14 +129,19 @@
       <div class="divider div-transparent"></div>
     </div>
 
+
+
     <div class="memory-comments mb-3">
       <h2>Comments</h2>
-      <% @comments.each do |comment| %>
-        <div class="comment">
-          <p><%= comment.content %></p>
-          <p class="text-end nickname-font p-2"><%= comment.user.nickname.capitalize() %></p>
+        <div class="d-flex justify-content-between">
+          <%= cl_image_tag @user2[0].avatar.key, height: 50, class: "avatar-bordered" %>
+          <% @comments.each do |comment| %>
+            <div class="comment">
+              <p style="margin-left: 1vh"><%= comment.content %></p>
+              <p class="text-end nickname-font"><%= comment.user.nickname.capitalize() %></p>
+            </div>
+          <% end %>
         </div>
-      <% end %>
     </div>
   <% end %>
 </div>

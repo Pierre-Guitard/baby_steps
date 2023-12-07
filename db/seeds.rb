@@ -108,11 +108,11 @@ puts "parent entry 4 created"
 # create memories
 
 locations = [
-  "135 rue de Fontenay 94300 Vincennes",
-  "122 rue Salvador Allende 92000 Nanterre",
-  "445 Chem. de la Riante Colline, 74120 Megève",
-  "2281 Rte de l'Europe, 84350 Courthézon",
-  "12 Rte du Sémaphore, 29630 Plougasnou"
+  "Vincennes",
+  "Nanterre",
+  "Megève",
+  "Courthézon",
+  "Plougasnou"
 ]
 
 puts "creating memories - add medias later"
@@ -244,7 +244,7 @@ seed_medias = ["A7300234.jpeg",
 index_photo = 0
 
 Memory.all.each do |memory|
-  rand(1..1).times do
+  rand(3..3).times do
     image = File.open(Rails.root.join("app/assets/images/seed/#{seed_medias[index_photo]}"))
     memory.medias.attach(io: image, filename: "photo_#{rand(1..9999999)}.jpg", content_type: "image/jpg")
     index_photo += 1
