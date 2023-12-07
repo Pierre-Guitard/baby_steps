@@ -1,4 +1,4 @@
-<div class="container-home">
+<div class="container-home" style="margin-top: 3vh">
 
   <div class="container col-12">
 
@@ -10,11 +10,11 @@
             <div class="progress <%= @step == 2 ? "progress-fill" : "" %>" id="progress"></div>
             <div class="text-wrap">
                 <div class="circle progress-fill">1</div>
-                <p class="text">Infos</p>
+                <p class="text">What's new?</p>
             </div>
             <div class="text-wrap">
                 <div class="circle <%= @step == 2 ? "progress-fill" : "" %>">2</div>
-                <p class="text">Customization</p>
+                <p class="text">Tell us more</p>
             </div>
         </div>
 
@@ -83,7 +83,7 @@
             <% unless @step == 2 %>
               <%= f.button :submit, "Next", class:"btn btn-danger btn-submit", style: "color: white" %>
             <% else  %>
-              <%= f.button :submit,"Add a memory", class: "btn btn-danger btn-submit", style: "color: white" %>
+              <%= f.button :submit,"Save memory", class: "btn btn-danger btn-submit", style: "color: white" %>
             <% end %>
           </div>
 
