@@ -23,7 +23,7 @@
     <div class="babies-avatar p-1">
       <% @babies.each do |baby| %>
         <%= cl_image_tag baby.avatar.key, height: 50, class: "avatar-bordered", style: "border-color: #{baby.color}" %>
-        <p class="babies-ages"> <i><%= baby.nickname %> was <%= @age %> old</i></p>
+        <p class="babies-ages"> <i><%= baby.nickname %> was <%= baby.age_with_month(@memory) %> old</i></p>
       <% end %>
     </div>
 
