@@ -1,7 +1,9 @@
 .event {
-  padding: 5px;
-  background-color: white;
-  border-radius: 4px;
-  width: 160px;
+  position: absolute;
+  top: 25px;
+  width: 107px;
+  color: white;
+  background-color: $red;
+  border-radius: 25px;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
 }

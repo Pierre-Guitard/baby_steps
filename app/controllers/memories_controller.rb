@@ -36,6 +36,7 @@ class MemoriesController < ApplicationController
   end
 
   def show
+    # raise
     @comments = @memory.comments
     @babies = @memory.babies
     @linked_memories = []

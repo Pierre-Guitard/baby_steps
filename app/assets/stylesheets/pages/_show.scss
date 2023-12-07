@@ -4,7 +4,7 @@
   grid-gap: 5px;
 }
 .memory-content {
-  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
   border-radius: 4px;
   padding: 10px;
   background-color: white;
@@ -31,10 +31,12 @@
 
 .babies-ages {
   opacity: 0.5;
+  margin: 8px !important;
 }
 .wrapper
 {
-	padding-bottom: 25px;
+  margin-top: 30px;
+  margin-bottom: 30px;
 }
 
 .divider
@@ -54,4 +56,29 @@
 	width: 90%;
 	height: 1px;
 	background-image: linear-gradient(to right, transparent, rgb(48,49,51), transparent);
+}
+
+.row {
+  .col-8 {
+    padding: 3px !important;
+  }
+}
+
+.picture {
+  position: relative;
+  border-radius: 20px;
+  padding: 0;
+  padding-bottom: 3px;
+}
+
+.linked-events {
+  width: 75%;
+  margin-top: 25px;
+  padding: 10px;
+  background-color: $red;
+  border-radius: 4px;
+  a {
+    text-decoration: none !important;
+    color: white;
+  }
 }
