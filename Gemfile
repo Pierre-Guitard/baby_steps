@@ -56,6 +56,7 @@ gem 'faker'
 gem "geocoder"
 gem "actiontext"
 gem "image_processing", "~> 1.2"
+gem 'exifr'
 
 group :development, :test do
   gem "dotenv-rails"
