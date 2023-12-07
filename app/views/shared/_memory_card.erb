@@ -1,6 +1,9 @@
-<%= link_to memory, class:"card-memory", style:"background-image: url(#{cl_image_path memory.medias.reverse[0].key})" do %>
-  <% key_memories.each do |key_memory| %>
-    <div class="card-memory-event"><%= key_memory.baby.nickname.capitalize()%> - <%= key_memory.event%></div>
-  <% end %>
-    <div class="card-memory-date"><%= memory.date.strftime('%d/%m/%Y') %></div>
+<%= link_to memory, class:"card-memory", style:"background-image: url(#{cl_image_path memory.medias.reverse[0].key}" do %>
+    <div class="card-memory-infos <%= key_memories.empty? ? "" : "card-memory-event" %>">
+      <% if key_memories.empty? %>
+        <%= memory.date.strftime('%d/%m/%Y') %>
+      <% else %>
+        <i class="fa-solid fa-star color-red"></i><%= memory.date.strftime('%d/%m/%Y') %>
+      <% end %>
+    </div>
 <% end %>
