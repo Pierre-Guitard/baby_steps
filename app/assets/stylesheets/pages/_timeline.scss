@@ -70,7 +70,10 @@
 }
 
 .timeline-card-event {
-  font-family: $nick-name;
+  font-family: $body-font;
+  font-size: 0.9em;
+  margin-bottom: 0;
+  color: black!important;
 }
 
 .timeline-card-infos {

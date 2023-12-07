@@ -1,13 +1,13 @@
 
+<%= link_to timeline_event[:memory] do %>
   <div class="timeline_card_container <%= timeline_event[:baby].first_name == "mathias" ? "card-left" : "card-right" %>">
     <div class="timeline-card <%= timeline_event[:baby].first_name == "mathias" ? "" : "card-reverse" %>" style="top:<%= timeline_event[:margin] %>px;">
       <div class="timeline-card-infos <%= timeline_event[:baby].first_name == "mathias" ? "infos-right" : "" %>">
         <h5 class="timeline-card-event"><%= timeline_event[:event] %></h5>
       </div>
       <div class="timeline-card-img">
-        <%= link_to timeline_event[:memory] do %>
         <%= cl_image_tag timeline_event[:baby].avatar.key, height: 50, gravity:"faces", crop:"fill", class: "avatar-bordered", style: "border-color : #{timeline_event[:baby]}.color}" %>
-        <% end %>
       </div>
     </div>
   </div>
+<% end %>
