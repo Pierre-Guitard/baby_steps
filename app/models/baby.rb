@@ -22,3 +22,4 @@ class Baby < ApplicationRecord
     end
   end
 end
+  
