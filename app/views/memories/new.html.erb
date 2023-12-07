@@ -10,11 +10,11 @@
             <div class="progress <%= @step == 2 ? "progress-fill" : "" %>" id="progress"></div>
             <div class="text-wrap">
                 <div class="circle progress-fill">1</div>
-                <p class="text">What's new?</p>
+                <%# <p class="text">What's new?</p> %>
             </div>
             <div class="text-wrap">
                 <div class="circle <%= @step == 2 ? "progress-fill" : "" %>">2</div>
-                <p class="text">Tell us more</p>
+                <%# <p class="text">Tell us more</p> %>
             </div>
         </div>
 
@@ -22,7 +22,7 @@
 
           <% if @step == 1 %>
 
-            <%# <h2 class="py-3 steps-form">Add Memory Info</h2> %>
+            <h2 class="py-3 steps-form">What's new?</h2>
 
             <div>
 
@@ -63,7 +63,7 @@
 
           <% if @step == 2 %>
 
-            <%# <h2 class="py-3 steps-form">Customizing the Memory</h2> %>
+            <h2 class="py-3 steps-form">Tell us more</h2>
 
             <div class="py-2">
               <p>✍️ Description</p>

@@ -38,6 +38,7 @@ class MemoriesController < ApplicationController
   def show
     # raise
     @comments = @memory.comments
+    @user2 = User.where(first_name:"maud")
     @babies = @memory.babies
     @linked_memories = []
     @memory.key_memories.where.not(event: "").each do |key_memory|

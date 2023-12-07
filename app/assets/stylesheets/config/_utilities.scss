@@ -11,8 +11,28 @@ h3 {
 }
 
 .image-container {
-  width: 100%;
   height: 100%;
+  min-height: 220px;
+  padding: 0.4rem;
+  background-size: cover;
+  background-position: center;
+  border-radius: 20px;
+}
+
+.video-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  >i {
+    font-size: 36px;
+    color: $blue;
+  }
+  .event {
+    position: absolute;
+    top: 0.2rem;
+    left: 0.5rem;
+  }
 }
 
 .object-fit-cover {
