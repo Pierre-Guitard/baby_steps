@@ -319,7 +319,7 @@ end
 mathias_roll_over = Memory.new(
   date: "2021-03-20",
   title: "Mathias s'est retourné !",
-  location: "135 rue de Fontenay 94300 Vincennes",
+  location: "Vincennes",
   user: romain
 )
 mathias_roll_over.save!
@@ -348,7 +348,7 @@ puts "added photo"
 mathias_sitting = Memory.new(
   date: "2021-06-05",
   title: "Mathias se tient assis !",
-  location: "135 rue de Fontenay 94300 Vincennes",
+  location: "Vincennes",
   user: romain
 )
 mathias_sitting.save!
@@ -377,7 +377,7 @@ puts "added photo"
 mathias_crawling = Memory.new(
   date: "2021-10-21",
   title: "Mathias a fait du quatre pattes pour la première fois !",
-  location: "135 rue de Fontenay 94300 Vincennes",
+  location: "Vincennes",
   user: romain
 )
 mathias_crawling.save!
@@ -410,7 +410,7 @@ puts "added video"
 mathias_walking = Memory.new(
   date: "2022-03-19",
   title: "Mathias sait marcher !",
-  location: "135 rue de Fontenay 94300 Vincennes",
+  location: "Vincennes",
   user: romain
 )
 mathias_walking.save!
@@ -439,7 +439,7 @@ puts "added photo"
 gustave_roll_over = Memory.new(
   date: "2023-05-01",
   title: "Gustave s'est retourné !",
-  location: "135 rue de Fontenay 94300 Vincennes",
+  location: "Vincennes",
   user: romain
 )
 gustave_roll_over.save!
@@ -468,7 +468,7 @@ puts "added photo"
 gustave_sitting = Memory.new(
   date: "2023-09-24",
   title: "Gustave se tient assis !",
-  location: "135 rue de Fontenay 94300 Vincennes",
+  location: "Vincennes",
   user: romain
 )
 gustave_sitting.save!
@@ -492,4 +492,149 @@ puts "Created specific key memory 1"
 
 photo_gustave_sitting = File.open(Rails.root.join("app/assets/images/seed/gustave_sitting.jpeg"))
 gustave_sitting.medias.attach(io: photo_gustave_sitting, filename: "photo_#{rand(1..9999999)}.jpg", content_type: "image/jpg")
+puts "added photo"
+
+mathias_beach = Memory.new(
+  date: "2022-08-01",
+  title: "A la plage",
+  location: "Plougasnou",
+  user: romain
+)
+mathias_beach.save!
+ActionText::RichText.create!(record_type: 'Memory', record_id: mathias_beach.id, name: 'content', body: "<p>Aujourd'hui, un moment magique s'est produit dans la vie de Mathias. <strong>À l'âge de 11 mois</strong>, il a entrepris son tout premier voyage en quatre pattes. Les yeux brillants d'excitation, il a déployé toute son énergie pour explorer le monde qui l'entoure.</p>
+  <p>Les premiers pas hésitants se sont transformés en mouvements plus assurés, et notre petit explorateur a commencé à parcourir la pièce avec une curiosité infinie. C'était un spectacle incroyable de voir sa petite silhouette se déplacer avec tant de détermination.</p>")
+puts "Created specific memory 1"
+
+Comment.create!(
+  content: "La première fois que j'ai vu Mathias se déplacer à quatre pattes, mon cœur s'est rempli d'une joie indescriptible. C'est incroyable de voir à quel point il a grandi et gagné en indépendance. Ses petits pas hésitants ont donné le coup d'envoi à une nouvelle aventure, et je suis tellement fière de son exploration intrépide du monde qui l'entoure.",
+  memory: mathias_beach,
+  user: maud
+)
+puts "Created specific comment 1"
+
+KeyMemory.create!(
+  baby: Baby.find_by(first_name: "mathias"),
+  memory: mathias_beach,
+  event: "🏖️ Beach"
+)
+puts "Created specific key memory beach"
+
+photo_mathias_beach = File.open(Rails.root.join("app/assets/images/seed/mathias_beach.jpeg"))
+mathias_beach.medias.attach(io: photo_mathias_beach, filename: "photo_#{rand(1..9999999)}.jpg", content_type: "image/jpg")
+puts "added photo"
+
+mathias_scooter = Memory.new(
+  date: "2022-10-22",
+  title: "En trotinette",
+  location: "Vincennes",
+  user: romain
+)
+mathias_scooter.save!
+ActionText::RichText.create!(record_type: 'Memory', record_id: mathias_scooter.id, name: 'content', body: "<p>Aujourd'hui, un moment magique s'est produit dans la vie de Mathias. <strong>À l'âge de 11 mois</strong>, il a entrepris son tout premier voyage en quatre pattes. Les yeux brillants d'excitation, il a déployé toute son énergie pour explorer le monde qui l'entoure.</p>
+  <p>Les premiers pas hésitants se sont transformés en mouvements plus assurés, et notre petit explorateur a commencé à parcourir la pièce avec une curiosité infinie. C'était un spectacle incroyable de voir sa petite silhouette se déplacer avec tant de détermination.</p>")
+puts "Created specific memory 1"
+
+Comment.create!(
+  content: "La première fois que j'ai vu Mathias se déplacer à quatre pattes, mon cœur s'est rempli d'une joie indescriptible. C'est incroyable de voir à quel point il a grandi et gagné en indépendance. Ses petits pas hésitants ont donné le coup d'envoi à une nouvelle aventure, et je suis tellement fière de son exploration intrépide du monde qui l'entoure.",
+  memory: mathias_scooter,
+  user: maud
+)
+puts "Created specific comment 1"
+
+KeyMemory.create!(
+  baby: Baby.find_by(first_name: "mathias"),
+  memory: mathias_scooter,
+  event: "🛴 Scooter"
+)
+puts "Created specific key memory scooter"
+
+photo_mathias_scooter = File.open(Rails.root.join("app/assets/images/seed/mathias_scooter.jpeg"))
+mathias_scooter.medias.attach(io: photo_mathias_scooter, filename: "photo_#{rand(1..9999999)}.jpg", content_type: "image/jpg")
+puts "added photo"
+
+mathias_snow = Memory.new(
+  date: "2022-12-27",
+  title: "Le plein de neige",
+  location: "Megève",
+  user: romain
+)
+mathias_snow.save!
+ActionText::RichText.create!(record_type: 'Memory', record_id: mathias_snow.id, name: 'content', body: "<p>Aujourd'hui, un moment magique s'est produit dans la vie de Mathias. <strong>À l'âge de 11 mois</strong>, il a entrepris son tout premier voyage en quatre pattes. Les yeux brillants d'excitation, il a déployé toute son énergie pour explorer le monde qui l'entoure.</p>
+  <p>Les premiers pas hésitants se sont transformés en mouvements plus assurés, et notre petit explorateur a commencé à parcourir la pièce avec une curiosité infinie. C'était un spectacle incroyable de voir sa petite silhouette se déplacer avec tant de détermination.</p>")
+puts "Created specific memory 1"
+
+Comment.create!(
+  content: "La première fois que j'ai vu Mathias se déplacer à quatre pattes, mon cœur s'est rempli d'une joie indescriptible. C'est incroyable de voir à quel point il a grandi et gagné en indépendance. Ses petits pas hésitants ont donné le coup d'envoi à une nouvelle aventure, et je suis tellement fière de son exploration intrépide du monde qui l'entoure.",
+  memory: mathias_snow,
+  user: maud
+)
+puts "Created specific comment 1"
+
+KeyMemory.create!(
+  baby: Baby.find_by(first_name: "mathias"),
+  memory: mathias_snow,
+  event: "⛇ Snow"
+)
+puts "Created specific key memory snow"
+
+photo_mathias_snow = File.open(Rails.root.join("app/assets/images/seed/mathias_snow.jpeg"))
+mathias_snow.medias.attach(io: photo_mathias_snow, filename: "photo_#{rand(1..9999999)}.jpg", content_type: "image/jpg")
+puts "added photo"
+
+mathias_bed = Memory.new(
+  date: "2023-03-26",
+  title: "Un lit de grand",
+  location: "Megève",
+  user: romain
+)
+mathias_bed.save!
+ActionText::RichText.create!(record_type: 'Memory', record_id: mathias_bed.id, name: 'content', body: "<p>Aujourd'hui, un moment magique s'est produit dans la vie de Mathias. <strong>À l'âge de 11 mois</strong>, il a entrepris son tout premier voyage en quatre pattes. Les yeux brillants d'excitation, il a déployé toute son énergie pour explorer le monde qui l'entoure.</p>
+  <p>Les premiers pas hésitants se sont transformés en mouvements plus assurés, et notre petit explorateur a commencé à parcourir la pièce avec une curiosité infinie. C'était un spectacle incroyable de voir sa petite silhouette se déplacer avec tant de détermination.</p>")
+puts "Created specific memory 1"
+
+Comment.create!(
+  content: "La première fois que j'ai vu Mathias se déplacer à quatre pattes, mon cœur s'est rempli d'une joie indescriptible. C'est incroyable de voir à quel point il a grandi et gagné en indépendance. Ses petits pas hésitants ont donné le coup d'envoi à une nouvelle aventure, et je suis tellement fière de son exploration intrépide du monde qui l'entoure.",
+  memory: mathias_bed,
+  user: maud
+)
+puts "Created specific comment 1"
+
+KeyMemory.create!(
+  baby: Baby.find_by(first_name: "mathias"),
+  memory: mathias_bed,
+  event: "🛏️ Bed"
+)
+puts "Created specific key memory bed"
+
+photo_mathias_bed = File.open(Rails.root.join("app/assets/images/seed/mathias_bed.jpeg"))
+mathias_bed.medias.attach(io: photo_mathias_bed, filename: "photo_#{rand(1..9999999)}.jpg", content_type: "image/jpg")
+puts "added photo"
+
+mathias_school = Memory.new(
+  date: "2023-09-05",
+  title: "Première rentrée",
+  location: "Megève",
+  user: romain
+)
+mathias_school.save!
+ActionText::RichText.create!(record_type: 'Memory', record_id: mathias_school.id, name: 'content', body: "<p>Aujourd'hui, un moment magique s'est produit dans la vie de Mathias. <strong>À l'âge de 11 mois</strong>, il a entrepris son tout premier voyage en quatre pattes. Les yeux brillants d'excitation, il a déployé toute son énergie pour explorer le monde qui l'entoure.</p>
+  <p>Les premiers pas hésitants se sont transformés en mouvements plus assurés, et notre petit explorateur a commencé à parcourir la pièce avec une curiosité infinie. C'était un spectacle incroyable de voir sa petite silhouette se déplacer avec tant de détermination.</p>")
+puts "Created specific memory 1"
+
+Comment.create!(
+  content: "La première fois que j'ai vu Mathias se déplacer à quatre pattes, mon cœur s'est rempli d'une joie indescriptible. C'est incroyable de voir à quel point il a grandi et gagné en indépendance. Ses petits pas hésitants ont donné le coup d'envoi à une nouvelle aventure, et je suis tellement fière de son exploration intrépide du monde qui l'entoure.",
+  memory: mathias_school,
+  user: maud
+)
+puts "Created specific comment 1"
+
+KeyMemory.create!(
+  baby: Baby.find_by(first_name: "mathias"),
+  memory: mathias_school,
+  event: "💼 School"
+)
+puts "Created specific key memory school"
+
+photo_mathias_school = File.open(Rails.root.join("app/assets/images/seed/mathias_school.jpeg"))
+mathias_school.medias.attach(io: photo_mathias_school, filename: "photo_#{rand(1..9999999)}.jpg", content_type: "image/jpg")
 puts "added photo"

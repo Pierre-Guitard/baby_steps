@@ -8,7 +8,7 @@
       <h1 class=" px-2 pt-1"><%= @memory.title %></h1>
     </div>
     <div class="d-flex justify-content-between">
-        <p class="babies-ages"><i><%= @memory.date %></i></p>
+        <p class="babies-ages"><i><%= @memory.date.strftime('%d %b %Y') %></i></p>
         <% @babies.each do |baby| %>
         <p class="babies-ages"> <i>at <%= baby.age_with_month(@memory) %> old</i></p>
       <% end %>

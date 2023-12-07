@@ -5,6 +5,12 @@ class KeyMemory < ApplicationRecord
     "🐈 Crawling",
     "🧍Standing",
     "🚶Walking",
+    "🚄 Travel",
+    "🏖️ Beach",
+    "🛴 Scooter",
+    "⛇ Snow",
+    "🛏️ Bed",
+    "💼 School",
     ""
   ]
 
