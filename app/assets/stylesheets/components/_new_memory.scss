@@ -1,41 +1,15 @@
-.form {
-
-}
-
 .steps-form {
   text-align: center;
   // margin-top: 3vh;
   // color: $red;
 }
 
-// .step {
-//   height: 15px;
-//   width: 15px;
-//   margin: 0 2px;
-//   background-color: $orange;
-//   border: none;
-//   border-radius: 50%;
-//   display: inline-block;
-//   opacity: 0.5;
-// }
-
-// .step-fill {
-//   height: 15px;
-//   width: 15px;
-//   margin: 0 2px;
-//   background-color: $orange;
-//   border: none;
-//   border-radius: 50%;
-//   display: inline-block;
-//   opacity: 1;
-// }
-
 .submit_container {
   position: absolute;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  bottom: 10vh;
+  bottom: 5vh;
   width: 100%;
   padding-inline: 10%;
   gap: 20px;
@@ -63,19 +37,6 @@
   width: 80%;
   z-index: 0;
 }
-
-// .progress-container::after {
-//   // content:'';
-//   background-color: $red;
-//   color: $red;
-//   // position: absolute;
-//   top: 18px;
-//   left: 20px;
-//   // transform: translateY(-50%);
-//   height: 4px;
-//   width: 80%;
-//   z-index: 0;
-// }
 
 .progress {
   background-color: $red;
