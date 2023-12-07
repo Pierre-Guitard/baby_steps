@@ -1,9 +1,8 @@
 <div class="container-home">
-
-  <div class="d-flex flex-column align-items-stretch gap-4 mt-3 pb-4 mb-5">
+  <div class="container-memories">
     <% @memories.each do |memory| %>
-      <%= render "shared/memory_card", memory: memory, key_memories: memory.key_memories %>
+      <%= render "shared/memory_card", memory: memory, key_memories: memory.key_memories.where.not(event: "") %>
     <% end %>
-  </div>  
+  </div>
 </div>
 </div>
