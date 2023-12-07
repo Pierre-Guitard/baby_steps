@@ -8,27 +8,27 @@
   // color: $red;
 }
 
-.step {
-  height: 15px;
-  width: 15px;
-  margin: 0 2px;
-  background-color: $orange;
-  border: none;
-  border-radius: 50%;
-  display: inline-block;
-  opacity: 0.5;
-}
+// .step {
+//   height: 15px;
+//   width: 15px;
+//   margin: 0 2px;
+//   background-color: $orange;
+//   border: none;
+//   border-radius: 50%;
+//   display: inline-block;
+//   opacity: 0.5;
+// }
 
-.step-fill {
-  height: 15px;
-  width: 15px;
-  margin: 0 2px;
-  background-color: $orange;
-  border: none;
-  border-radius: 50%;
-  display: inline-block;
-  opacity: 1;
-}
+// .step-fill {
+//   height: 15px;
+//   width: 15px;
+//   margin: 0 2px;
+//   background-color: $orange;
+//   border: none;
+//   border-radius: 50%;
+//   display: inline-block;
+//   opacity: 1;
+// }
 
 .submit_container {
   position: absolute;
@@ -41,4 +41,97 @@
   gap: 20px;
   left: 0;
   border-radius: 8px;
+}
+
+.progress-container {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  // margin-bottom: 30px;
+  max-width: 100%;
+  width: 350px;
+}
+
+.progress-container::before {
+  content:'';
+  background-color: grey;
+  position: absolute;
+  top: 18px;
+  left: 20px;
+  transform: translateY(-50%);
+  height: 4px;
+  width: 80%;
+  z-index: 0;
+}
+
+// .progress-container::after {
+//   // content:'';
+//   background-color: $red;
+//   color: $red;
+//   // position: absolute;
+//   top: 18px;
+//   left: 20px;
+//   // transform: translateY(-50%);
+//   height: 4px;
+//   width: 80%;
+//   z-index: 0;
+// }
+
+.progress {
+  background-color: $red;
+  position: absolute;
+  top: 18px;
+  left: 20px;
+  transform: translateY(-50%);
+  height: 4px;
+  max-width: 80%;
+  width: 0;
+  z-index: 0;
+}
+
+.progress-fill {
+  transition: 4000ms ease;
+  color: $red;
+  background-color: $red;
+  width: 80%;
+}
+
+.text-wrap {
+  display: inline-block;
+  text-align: center;
+  width: 75px;
+}
+
+.text-wrap p {
+  font-weight: 400;
+  font-size: 12px;
+  color: $gray;
+}
+
+.text-wrap.active p {
+  font-weight: 400;
+  color: var(--text-fill);
+  transition: 400ms ease;
+}
+
+.circle {
+  background-color: $ivory;
+  border: 3px solid grey;
+  color: grey;
+  font-weight: 700;
+  border-radius: 50%;
+  height: 35px;
+  width: 35px;
+  position: relative; /* Position the child element */
+  left: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 400ms ease;
+}
+
+.circle.progress-fill {
+  border-color: $red;
+  background-color: $ivory;
+  color: black;
 }
