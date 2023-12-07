@@ -2,17 +2,23 @@
 
   <div class="pt-4">
     <div class="memory-date d-flex pb-1">
-    <% @babies.each do |baby| %>
-        <%= cl_image_tag baby.avatar.key, height: 50, class: "avatar-bordered", style: "border-color: #{baby.color}" %>
+     <% if @babies[1] %>
+        <%= cl_image_tag @babies[0].avatar.key, height: 50, class: "avatar-bordered", style: "border-color: #{@babies[0].color}" %>
+        <%= cl_image_tag @babies[1].avatar.key, height: 50, class: "avatar-bordered", style: "border-color: #{@babies[1].color}" %>
+      <% else %>
+        <%= cl_image_tag @babies[0].avatar.key, height: 50, class: "avatar-bordered", style: "border-color: #{@babies[0].color}" %>
       <% end %>
       <h1 class=" px-2 pt-1"><%= @memory.title %></h1>
     </div>
-    <div class="d-flex justify-content-between">
+    <% if @babies[1] %>
+      <p class="babies-ages"><i><%= @memory.date %></i></p>
+      <p class="babies-ages"> <i>at <%= @babies[0].age_with_month(@memory) %> old and <%= @babies[1].age_with_month(@memory) %> old</i></p>
+    <% else %>
+      <div class="d-flex justify-content-between">
         <p class="babies-ages"><i><%= @memory.date %></i></p>
-        <% @babies.each do |baby| %>
-        <p class="babies-ages"> <i>at <%= baby.age_with_month(@memory) %> old</i></p>
-      <% end %>
+        <p class="babies-ages"> <i>at <%= @babies[0].age_with_month(@memory) %> old</i></p>
       </div>
+    <% end %>
   </div>
 
   <div class="memory-medias d-flex w-100" data-controller="medias">
@@ -21,8 +27,12 @@
         <% if @memory.medias[0].content_type.end_with?("mp4") %>
 
         <div class="col-8">
-          <div class="image-container w-100" data-medias-target="video">
-              <video width="254" height="260" src="<%= cl_video_path(@memory.medias[0].key) %>"  data-bs-toggle='modal' data-bs-target="#modal-<%= @memory.medias[0].key %>"></video>
+
+          <div class="video-container image-container w-100" style="background-image: url(<%= cl_video_path(@memory.medias[0].key) %>.jpg)" data-medias-target="video" data-bs-toggle="modal" data-bs-target="#modal-<%= @memory.medias[0].key %>">
+            <i class="fa-regular fa-circle-play"></i>
+            <% if @memory.key_memories[0].event != "" %>
+              <%= render "shared/event" %>
+            <% end %>
           </div>
         </div>
 
@@ -43,8 +53,9 @@
         <% else %>
 
         <div class="col-8">
-          <div class="image-container w-100" >
-            <%= cl_image_tag @memory.medias[0].key, width: 500, height: 500, crop: :fill, gravity: :faces, class: "picture object-fit-cover", data: { medias_target: "picture", bs_toggle: "modal", bs_target:"#modal-#{@memory.medias[0].key}" } %>
+          <div class="image-container w-100" style="background-image: url(<%= cl_image_path(@memory.medias[0].key) %>)" data-medias-target="picture" data-bs-toggle="modal" data-bs-target="#modal-<%= @memory.medias[0].key %>">
+
+            <%#= cl_image_tag @memory.medias[0].key, width: 500, height: 500, crop: :fill, gravity: :faces, class: "picture object-fit-cover"%>
                 <% if @memory.key_memories[0].event != "" %>
                   <%= render "shared/event" %>
                 <% end %>
@@ -104,7 +115,8 @@
         <% @linked_memories.each do |memory_array| %>
           <% memory_array.each do |memory| %>
             <div class="linked-memory">
-              <%= link_to "#{memory.key_memories[0].baby.nickname.capitalize()} - First time #{memory.key_memories[0].event}", memory_path(memory) %>
+                <%= cl_image_tag memory.babies[0].avatar.key, height: 50, class: "avatar-bordered", style: "border-color: #{memory.babies[0].color}" %>
+              <%= link_to "See #{memory.key_memories[0].baby.nickname.capitalize()} first time #{memory.key_memories[0].event}", memory_path(memory) %>
             </div>
           <% end %>
         <% end %>
