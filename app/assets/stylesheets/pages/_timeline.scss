@@ -67,6 +67,7 @@
   padding: 6px;
   background-color: white;
   border: solid 2px $red;
+  width: 155px;
 }
 
 .timeline-card-event {
@@ -99,5 +100,9 @@
 
 .card-reverse {
   flex-direction: row-reverse;
+  justify-content: flex-end;
+}
+
+.card-left > .timeline-card {
   justify-content: flex-end;
 }
