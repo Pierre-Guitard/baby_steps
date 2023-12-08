@@ -134,7 +134,7 @@
     <div class="memory-comments mb-3">
       <h2>Comments</h2>
         <div class="d-flex justify-content-between">
-          <%= cl_image_tag @user2[0].avatar.key, height: 50, class: "avatar-bordered" %>
+          <%= cl_image_tag @memory.comments[0].user.avatar.key, height: 50, class: "avatar-bordered" %>
           <% @comments.each do |comment| %>
             <div class="comment">
               <p style="margin-left: 1vh"><%= comment.content %></p>
