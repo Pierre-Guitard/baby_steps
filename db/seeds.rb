@@ -374,17 +374,17 @@ puts "added photo"
 
 mathias_crawling = Memory.new(
   date: "2021-10-21",
-  title: "Mathias a fait du quatre pattes pour la première fois !",
+  title: "Il rampe enfin !",
   location: "Vincennes",
   user: maud
 )
 mathias_crawling.save!
-ActionText::RichText.create!(record_type: 'Memory', record_id: mathias_crawling.id, name: 'content', body: "<p>Aujourd'hui, un moment magique s'est produit dans la vie de Mathias. <strong>À l'âge de 11 mois</strong>, il a entrepris son tout premier voyage en quatre pattes. Les yeux brillants d'excitation, il a déployé toute son énergie pour explorer le monde qui l'entoure.</p>
-  <p>Les premiers pas hésitants se sont transformés en mouvements plus assurés, et notre petit explorateur a commencé à parcourir la pièce avec une curiosité infinie. C'était un spectacle incroyable de voir sa petite silhouette se déplacer avec tant de détermination.</p>")
+ActionText::RichText.create!(record_type: 'Memory', record_id: mathias_crawling.id, name: 'content', body: "<p>Aujourd'hui, un moment <strong>magique</strong> s'est produit dans la vie de Mathias. Il a entrepris son tout premier voyage en quatre pattes.</p>
+  <p>Les premiers pas hésitants se sont transformés en mouvements plus assurés, et notre petit explorateur a commencé à parcourir la pièce avec une curiosité infinie.</p>")
 puts "Created specific memory 1"
 
 Comment.create!(
-  content: "La première fois que j'ai vu Mathias se déplacer à quatre pattes, mon cœur s'est rempli d'une joie indescriptible. C'est incroyable de voir à quel point il a grandi et gagné en indépendance. Ses petits pas hésitants ont donné le coup d'envoi à une nouvelle aventure, et je suis tellement fière de son exploration intrépide du monde qui l'entoure.",
+  content: "Notre petit chat fait enfin du 4 pattes ! Trop rigolo de le voir se déplacer, désormais l'appart entier est son terrain de jeu !",
   memory: mathias_crawling,
   user: romain
 )
