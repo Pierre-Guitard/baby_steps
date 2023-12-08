@@ -132,13 +132,13 @@
 
 
     <div class="memory-comments mb-3">
-      <h2>Comments</h2>
+      <h2>Comment</h2>
         <div class="d-flex justify-content-between">
-          <%= cl_image_tag @memory.comments[0].user.avatar.key, height: 50, class: "avatar-bordered" %>
+          <%= cl_image_tag @memory.comments[0].user.avatar.key, height: 50, class: "avatar-bordered", style: "border-color : #{@memory.comments[0].user.color}" %>
           <% @comments.each do |comment| %>
             <div class="comment">
               <p style="margin-left: 1vh"><%= comment.content %></p>
-              <p class="text-end nickname-font"><%= comment.user.nickname.capitalize() %></p>
+              <p class="text-end nickname-font author-signature"><%= comment.user.nickname.capitalize() %></p>
             </div>
           <% end %>
         </div>

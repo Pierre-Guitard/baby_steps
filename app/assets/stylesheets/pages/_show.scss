@@ -78,7 +78,6 @@
 
 .linked-events {
   width: 100%;
-  margin-top: 25px;
   padding: 10px;
   background-color: $red;
   border-radius: 20px;
@@ -90,4 +89,8 @@
 
 .author-signature {
   padding: 0 16px !important;
+}
+
+.linked-memory {
+  margin-top: 0px !important;
 }
