@@ -1,8 +1,11 @@
 {
   "background_color": "#aed9e0",
+  "theme_color": "#aed9e0",
   "description": "Chronicle your newborn's adventures, offer the gift of a lifetime!",
-  "display": "fullscreen",
+  "display": "standalone",
   "name": "Baby Steps",
+  "id": "/",
+  "start_url": "/",
   "icons": [
     {
     "src": "\/android-icon-36x36.png",
