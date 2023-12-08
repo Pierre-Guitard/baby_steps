@@ -36,5 +36,12 @@
 .babysteps-name {
   font-family: $navbar-font;
   margin-bottom: 0px;
+  margin-top: 10px;
   font-size: 1.5rem;
+  img {
+    width: 220px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
