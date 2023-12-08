@@ -10,14 +10,14 @@
 .memory-content {
   // box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
   border-radius: 4px;
-  padding: 0 10px 10px 10px;
+  padding-bottom: 10px;
   // background-color: white;
 }
 
 .memory-comments {
   // box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   border-radius: 4px;
-  padding: 10px;
+  padding: 10px 0px;
   // background-color: white;
 }
 
@@ -35,7 +35,7 @@
 
 .babies-ages {
   opacity: 0.5;
-  margin: 8px !important;
+  overflow: visible;
 }
 .wrapper
 {
